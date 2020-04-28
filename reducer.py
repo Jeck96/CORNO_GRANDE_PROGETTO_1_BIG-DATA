@@ -29,6 +29,7 @@ for line in sys.stdin:
         dizionario[simbolo] = [azione]
 
 #Iterarazione sul dizionario per calcolare i vari campi richiesti
+result = []
 for k in dizionario:
     price_min = [] 
     price_max = []
@@ -48,4 +49,16 @@ for k in dizionario:
     final_price = float(dizionario[k][len(dizionario[k])-1]['close'])
     x_cent_dif = 100 * (initial_price-final_price) / initial_price
 
-    print(f'{{\nsimbolo:{k}\nvariazone_percentuale:{x_cent_dif}%\nprezzo_min:{lowest_price}\nprezzo_massimo:{hieght_price}\nvolume_medio:{average_volume}\n}}')
+     #print(f'{{\nsimbolo:{k}\nvariazone_percentuale:{x_cent_dif}%\nprezzo_min:{lowest_price}\nprezzo_massimo:{hieght_price}\nvolume_medio:{average_volume}\n}}')
+
+    result.append({
+        "ticker" : k,
+        "variazione_percentuale" : x_cent_dif,
+        "prezzo_minimo" : lowest_price,
+        "prezzo_massimo" : hieght_price,
+        "volume_medio" : average_volume
+    })
+result = sorted(result, key= lambda a: a['variazione_percentuale'])
+for v in result:
+    print(v)
+   
