@@ -46,4 +46,12 @@ for k in dizionario:
     hieght_price = max(price_max)
     average_volume = sum_volums/len(dizionario[k])
 
-    print(f'{{\nsimbolo:{k}\nprezzo_min:{lowest_price}\nprezzo_massimo:{hieght_price}\nvolume_medio:{average_volume}}}')
+    dizionario[k] = sorted(dizionario[k], key=lambda a: a['date'])
+    
+    #d_i = dizionario[k][0]['date']
+    #d_f = dizionario[k][len(dizionario[k])-1]['date'] 
+    initial_price = float(dizionario[k][0]['close'])
+    final_price = float(dizionario[k][len(dizionario[k])-1]['close'])
+    x_cent_dif = 100 * (initial_price-final_price) / initial_price
+
+    print(f'{{\nsimbolo:{k}\nvariazone_percentuale:{x_cent_dif}%\nprezzo_min:{lowest_price}\nprezzo_massimo:{hieght_price}\nvolume_medio:{average_volume}\n}}')
