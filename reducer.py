@@ -34,13 +34,16 @@ for k in dizionario:
     # è equivalente al for sotto, ma visto che dovremmo fare altre cose conviene il for esplicito
     #prezzi_min = [float(a['low']) for a in dizionario[k]] 
     
-    prezzi_min = [] 
-    prezzi_max = []
+    price_min = [] 
+    price_max = []
+    sum_volums = 0
     for a in dizionario[k]:
-        prezzi_min.append(float(a['low']))
-        prezzi_max.append(float(a['high']))
+        price_min.append(float(a['low']))
+        price_max.append(float(a['high']))
+        sum_volums+=(int(a['volume']))
 
-    lowest_price = min(prezzi_min)
-    hieght_price = max(prezzi_max)
+    lowest_price = min(price_min)
+    hieght_price = max(price_max)
+    average_volume = sum_volums/len(dizionario[k])
 
-    print(f'{{\nsimbolo:{k}\nprezzo_min:{lowest_price}\nprezzo_massimo:{hieght_price}\n}}')
+    print(f'{{\nsimbolo:{k}\nprezzo_min:{lowest_price}\nprezzo_massimo:{hieght_price}\nvolume_medio:{average_volume}}}')
