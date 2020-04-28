@@ -30,10 +30,6 @@ for line in sys.stdin:
 
 #Iterarazione sul dizionario per calcolare i vari campi richiesti
 for k in dizionario:
-
-    # è equivalente al for sotto, ma visto che dovremmo fare altre cose conviene il for esplicito
-    #prezzi_min = [float(a['low']) for a in dizionario[k]] 
-    
     price_min = [] 
     price_max = []
     sum_volums = 0
@@ -45,11 +41,9 @@ for k in dizionario:
     lowest_price = min(price_min)
     hieght_price = max(price_max)
     average_volume = sum_volums/len(dizionario[k])
-
-    dizionario[k] = sorted(dizionario[k], key=lambda a: a['date'])
-    
-    #d_i = dizionario[k][0]['date']
-    #d_f = dizionario[k][len(dizionario[k])-1]['date'] 
+   
+    #calcolo variazione percentuale di prezzo
+    dizionario[k] = sorted(dizionario[k], key=lambda a: a['date']) #ordino per data
     initial_price = float(dizionario[k][0]['close'])
     final_price = float(dizionario[k][len(dizionario[k])-1]['close'])
     x_cent_dif = 100 * (initial_price-final_price) / initial_price
