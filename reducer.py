@@ -47,7 +47,7 @@ for k in dizionario:
     dizionario[k] = sorted(dizionario[k], key=lambda a: a['date']) #ordino per data
     initial_price = float(dizionario[k][0]['close'])
     final_price = float(dizionario[k][len(dizionario[k])-1]['close'])
-    x_cent_dif = 100 * (initial_price-final_price) / initial_price
+    x_cent_dif = 100 * (final_price-initial_price) / initial_price
 
      #print(f'{{\nsimbolo:{k}\nvariazone_percentuale:{x_cent_dif}%\nprezzo_min:{lowest_price}\nprezzo_massimo:{hieght_price}\nvolume_medio:{average_volume}\n}}')
 
