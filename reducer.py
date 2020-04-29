@@ -49,6 +49,9 @@ for k in dizionario:
     final_price = float(dizionario[k][len(dizionario[k])-1]['close'])
     x_cent_dif = 100 * (final_price-initial_price) / initial_price
 
+    #TODO: RESTITUIRE IL RISULTATO IN ORDINE DECRESCENTE PER VARIAZIONE PERCENTUALE
+    print(f'{{\nsimbolo:{k}\nvariazone_percentuale:{x_cent_dif}%\nprezzo_min:{lowest_price}\nprezzo_massimo:{hieght_price}\nvolume_medio:{average_volume}\n}}')
+
      #print(f'{{\nsimbolo:{k}\nvariazone_percentuale:{x_cent_dif}%\nprezzo_min:{lowest_price}\nprezzo_massimo:{hieght_price}\nvolume_medio:{average_volume}\n}}')
 
     result.append({
@@ -61,4 +64,3 @@ for k in dizionario:
 result = sorted(result, key= lambda a: a['variazione_percentuale'])
 for v in result:
     print(v)
-   
