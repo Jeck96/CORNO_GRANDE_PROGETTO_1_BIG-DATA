@@ -6,10 +6,10 @@ import json
 
 def toJson(azione):
     dic = {   "ticker" : azione[0],
-     "open" : azione[1], 
+     #"open" : azione[1], 
      "close" : azione[2],
-     "low" : azione[4],
-     "high" : azione[5],
+     #"low" : azione[4],
+     #"high" : azione[5],
      "volume" : azione[6],
     "date" : azione[7],
     }

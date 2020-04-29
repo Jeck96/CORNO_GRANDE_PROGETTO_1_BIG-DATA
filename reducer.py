@@ -14,10 +14,7 @@ for line in sys.stdin:
     formato dell'oggetto caricato:
     {
         "ticker" : "GDR",
-        "open" : "9.46724, 
         "close" : "9.743632",
-        "low" : "9.141",
-        "high" : "10.287228",
         "volume" : "57393",
         "date" : "2017-04-27"
     }
@@ -31,16 +28,14 @@ for line in sys.stdin:
 #Iterarazione sul dizionario per calcolare i vari campi richiesti
 result = []
 for k in dizionario:
-    price_min = [] 
-    price_max = []
+    all_price = [] 
     sum_volums = 0
     for a in dizionario[k]:
-        price_min.append(float(a['low']))
-        price_max.append(float(a['high']))
+        all_price.append(float(a['close']))
         sum_volums+=(int(a['volume']))
 
-    lowest_price = min(price_min)
-    hieght_price = max(price_max)
+    lowest_price = min(all_price)
+    hieght_price = max(all_price)
     average_volume = sum_volums/len(dizionario[k])
    
     #calcolo variazione percentuale di prezzo
