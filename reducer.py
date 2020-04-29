@@ -45,7 +45,7 @@ for k in dizionario:
     x_cent_dif = 100 * (final_price-initial_price) / initial_price
 
     #TODO: RESTITUIRE IL RISULTATO IN ORDINE DECRESCENTE PER VARIAZIONE PERCENTUALE
-    print(f'{{\nsimbolo:{k}\nvariazone_percentuale:{x_cent_dif}%\nprezzo_min:{lowest_price}\nprezzo_massimo:{hieght_price}\nvolume_medio:{average_volume}\n}}')
+    #print(f'{{\nsimbolo:{k}\nvariazone_percentuale:{x_cent_dif}%\nprezzo_min:{lowest_price}\nprezzo_massimo:{hieght_price}\nvolume_medio:{average_volume}\n}}')
 
      #print(f'{{\nsimbolo:{k}\nvariazone_percentuale:{x_cent_dif}%\nprezzo_min:{lowest_price}\nprezzo_massimo:{hieght_price}\nvolume_medio:{average_volume}\n}}')
 
@@ -56,6 +56,6 @@ for k in dizionario:
         "prezzo_massimo" : hieght_price,
         "volume_medio" : average_volume
     })
-result = sorted(result, key= lambda a: a['variazione_percentuale'])
+result = sorted(result, key= lambda a: a['variazione_percentuale'],reverse=True)
 for v in result:
     print(v)
