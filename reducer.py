@@ -10,6 +10,7 @@ for line in sys.stdin:
     line = line.split('\t')
     simbolo = line[0]
     azione = json.loads(line[1])
+    del line
     """
     formato dell'oggetto caricato:
     {
@@ -37,7 +38,9 @@ for k in dizionario:
     lowest_price = min(all_price)
     hieght_price = max(all_price)
     average_volume = sum_volums/len(dizionario[k])
-   
+    
+    del all_price
+    
     #calcolo variazione percentuale di prezzo
     dizionario[k] = sorted(dizionario[k], key=lambda a: a['date']) #ordino per data
     initial_price = float(dizionario[k][0]['close'])
@@ -45,7 +48,7 @@ for k in dizionario:
     x_cent_dif = 100 * (final_price-initial_price) / initial_price
 
     #print(f'{{\nsimbolo:{k}\nvariazone_percentuale:{x_cent_dif}%\nprezzo_min:{lowest_price}\nprezzo_massimo:{hieght_price}\nvolume_medio:{average_volume}\n}}')
-
+ 
     result.append({
         "ticker" : k,
         "variazione_percentuale" : x_cent_dif,
@@ -53,6 +56,8 @@ for k in dizionario:
         "prezzo_massimo" : hieght_price,
         "volume_medio" : average_volume
     })
+del dizionario #risparmiamo memoria
 result = sorted(result, key= lambda a: a['variazione_percentuale'],reverse=True)
 for v in result:
     print(v)
+    
