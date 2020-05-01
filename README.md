@@ -1,32 +1,32 @@
 # corno_grande_progetto1
 Progetto_1 per il corso di Big Data
 
-#Struttura dell repository
-|corno_grande_progetto1/
-|
-|------ job1/
-|		|---- map_reduce/
-|				|-- mapper.py
-|				|-- combiner.py
-|				|-- reducer.py
-|					....
-|		|---- hive/
-|		|---- spark/
-|
-|------ job2/
-|		|---- map_reduce/
-|				|-- mapper.py
-|				|-- combiner.py
-|				|-- reducer.py
-|					....
-|		|---- hive/
-|		|---- spark/
-|
-|------ job3/
-|		|---- map_reduce/
-|				|-- mapper.py
-|				|-- combiner.py
-|				|-- reducer.py
-|					....
-|		|---- hive/
-|		|---- spark/
+Struttura dell repository <br/>
+|corno_grande_progetto1/<br/>
+|  
+|------ job1/<br/>
+|		|---- map_reduce/<br/>
+|				|-- mapper.py<br/>
+|				|-- combiner.py<br/>
+|				|-- reducer.py<br/>
+|					....<br/>
+|		|---- hive/<br/>
+|		|---- spark/<br/>
+|  
+|------ job2/<br/>
+|		|---- map_reduce/<br/>
+|				|-- mapper.py<br/>
+|				|-- combiner.py<br/>
+|				|-- reducer.py<br/>
+|					....  
+|		|---- hive/<br/>
+|		|---- spark/<br/>
+|<br/>
+|------ job3/<br/>
+|		|---- map_reduce/<br/>
+|				|-- mapper.py<br/>
+|				|-- combiner.py<br/>
+|				|-- reducer.py<br/>
+|					....<br/>
+|		|---- hive/<br/>
+|		|---- spark/<br/>
