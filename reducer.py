@@ -7,7 +7,7 @@ dizionario = {}
 for line in sys.stdin:
     #Costruiamo un dizionario con chiave il simbolo dell'azione e
     # valore l'azione che comprende quindi tutti i campi
-    line = line.split('\t')
+    line = line.split(',',1)
     simbolo = line[0]
     azione = json.loads(line[1])
     del line
