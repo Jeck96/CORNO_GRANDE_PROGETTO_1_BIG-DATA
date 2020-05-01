@@ -42,7 +42,7 @@ for k in dizionario:
         low_prices.append(float(a['low']))
         hig_prices.append(float(a['high']))
         sum_volums+=(int(a['sum_volume']))
-        count+=(int(a['count_volune']))
+        count+=(int(a['count_volume']))
 
     lowest_price = min(low_prices)
     hieght_price = max(hig_prices)
