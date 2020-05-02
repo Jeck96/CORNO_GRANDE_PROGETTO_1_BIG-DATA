@@ -12,8 +12,10 @@ CREATE TABLE stock_price(
 )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',';
 
-LOAD DATA LOCAL INPATH '/home/giacomo/hadoop-3.2.1/DATI_AGGIUNTIVI/BIG_DATA_PROGETTO-1/azioni_test.csv'
+LOAD DATA INPATH 'input/hist_sto_pri_pt1.csv'
 OVERWRITE INTO TABLE stock_price;
 
 
 --/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/historical_stock_prices_update.csv
+--input/hist_sto_pri_pt1.csv
+--input/historical_stock_prices_update.csv

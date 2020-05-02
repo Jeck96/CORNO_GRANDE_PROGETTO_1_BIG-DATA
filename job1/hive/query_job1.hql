@@ -5,6 +5,7 @@
 --stock_price serve per prendere il valore di chiusura finale dell'azione (quindi quello --con la cui tupla contiene come data data_max) il secondo join serve per prendere il valore
 --di chiusura iniziale (quindi quello con cui la tupla contiene come data: data_min)
 
+--INSERT OVERWRITE DIRECTORY 'output/result_hive_partial'
 SELECT var_perc.ticker, variazione_percentuale, prezzo_minimo, prezzo_massimo, volume_medio
 FROM 
 		(SELECT finale.ticker, (100*(finale.close-iniziale.close)/iniziale.close) AS variazione_percentuale
@@ -25,7 +26,7 @@ FROM
 		WHERE data>='2008-01-01'
 		GROUP BY ticker) AS min_max_avg
 	ON var_perc.ticker=min_max_avg.ticker;
-
+--ORDER BY variazione_percentuale DESC;
 
 
 
