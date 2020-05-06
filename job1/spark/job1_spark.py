@@ -5,10 +5,9 @@ spark = ps.sql.SparkSession.builder.appName("Python Spark SQL basic example").co
 #df = spark.read.load("/home/adfr/Documenti/python-BigData/progetto1/csv_progetto/test-progetto.csv",
                    #  format="csv", sep=",", inferSchema="true", header="true")
 
-df=spark.read.csv('/home/adfr/Documenti/python-BigData/progetto1/csv_progetto/test-progetto.csv',inferSchema="true", header="true")
+df=spark.read.csv('/home/adfr/Documenti/python-BigData/progetto1/csv_progetto/historical_stock_prices.csv',inferSchema="true", header="true")
 #df=spark.read.csv('/home/giacomo/hadoop-3.2.1/DATI_AGGIUNTIVI/BIG_DATA_PROGETTO-1/azioni_test.csv',inferSchema="true", header="true")
 #df=spark.read.csv('/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/historical_stock_prices.csv',inferSchema="true", header="true")
-#df.filter(df.date>'2008').show()
 
 """
 un'azione è così definita:
@@ -25,6 +24,10 @@ azioni = df.rdd
 
 """
 definiamo un map (K,V) tale che:
+                K = "ticker"
+                V[0] = "close"
+                V[1] = "volume"
+                V[2] = "date"
 """
 azioni = azioni.filter(lambda a: a[7]>='2008-01-01').map(lambda line: ( line[0], [line[2],line[6],line[7]] ) )
 
@@ -40,7 +43,7 @@ def funzione_reduce(a1,a2):
 min_azioni=azioni.reduceByKey(min)
 max_azioni = azioni.reduceByKey(max)
 """
-def func_reduce(a1,a2):
+def f_red_var_percent(a1,a2):
     if(a1[0]<a2[0]):
         data_iniziale = a1[0]
         close_iniziale = a1[1]
@@ -54,13 +57,18 @@ def func_reduce(a1,a2):
         data_finale = a2[2]
         close_finale = a2[3]
     return ([data_iniziale,close_iniziale,data_finale,close_finale])
-
-var_perc = azioni.map( lambda a: (a[0],[a[1][2],a[1][0],a[1][2],a[1][0]]) ).reduceByKey(func_reduce)
+"""
+var_perc = azioni.map( lambda a: (a[0],[a[1][2],a[1][0],a[1][2],a[1][0]]) ).reduceByKey(f_red_var_percent)
 result_var_perc = var_perc.map(lambda a: (a[0],(100*(a[1][3]-a[1][1])/a[1][1])))
-list_var_perc = result_var_perc.collect()
-for i in list_var_perc:
+for i in result_var_perc.collect():
     print (i)
-
+"""
+#calcolo volume medio
+def f_red_avg_vol(a1,a2):
+        return (a1[0]+a2[0],a1[1]+a2[1])
+avg_vol = azioni.map(lambda a: (a[0],(a[1][1],1))).reduceByKey(f_red_avg_vol)
+for t,v in avg_vol.collect():
+        print(t,v[0]/v[1])
 """
 #ci salviamo in una lista l'RDD contenente i valori minimi per ciascun simbolo_azione
 list_min_azioni=min_azioni.collect()
