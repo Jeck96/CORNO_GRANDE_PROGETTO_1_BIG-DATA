@@ -5,7 +5,8 @@ spark = ps.sql.SparkSession.builder.appName("Python Spark SQL basic example").co
 #df = spark.read.load("/home/adfr/Documenti/python-BigData/progetto1/csv_progetto/test-progetto.csv",
                    #  format="csv", sep=",", inferSchema="true", header="true")
 
-df=spark.read.csv('/home/giacomo/hadoop-3.2.1/DATI_AGGIUNTIVI/BIG_DATA_PROGETTO-1/azioni_test.csv',inferSchema="true", header="true")
+df=spark.read.csv('/home/adfr/Documenti/python-BigData/progetto1/csv_progetto/test-progetto.csv',inferSchema="true", header="true")
+#df=spark.read.csv('/home/giacomo/hadoop-3.2.1/DATI_AGGIUNTIVI/BIG_DATA_PROGETTO-1/azioni_test.csv',inferSchema="true", header="true")
 #df.filter(df.date>'2008').show()
 
 """
@@ -40,6 +41,7 @@ max_azioni = azioni.reduceByKey(max)
 list_min_azioni=min_azioni.collect()
 #ci salviamo in una lista l'RDD contente i valori massimi ci ciascun simbolo_azione
 list_max_azioni = max_azioni.collect()
+
 
 
 print ("\nDopo il reduceByKey:\n")
