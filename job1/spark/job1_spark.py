@@ -55,10 +55,13 @@ def func_reduce(a1,a2):
 
 var_perc = azioni.map( lambda a: (a[0],[a[1][2],a[1][0],a[1][2],a[1][0]]) ).reduceByKey(func_reduce)
 result_var_perc = var_perc.map(lambda a: (a[0],(100*(a[1][3]-a[1][1])/a[1][1])))
+result_var_perc.saveAsTextFile("output")
+"""
 list_var_perc = result_var_perc.collect()
+
 for i in list_var_perc:
     print (i)
-
+"""
 """
 #ci salviamo in una lista l'RDD contenente i valori minimi per ciascun simbolo_azione
 list_min_azioni=min_azioni.collect()
