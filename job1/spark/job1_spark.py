@@ -57,12 +57,11 @@ def f_red_var_percent(a1,a2):
         data_finale = a2[2]
         close_finale = a2[3]
     return ([data_iniziale,close_iniziale,data_finale,close_finale])
-"""
+
 var_perc = azioni.map( lambda a: (a[0],[a[1][2],a[1][0],a[1][2],a[1][0]]) ).reduceByKey(f_red_var_percent)
 result_var_perc = var_perc.map(lambda a: (a[0],(100*(a[1][3]-a[1][1])/a[1][1])))
-<<<<<<< HEAD
 result_var_perc.saveAsTextFile("output")
-"""
+
 list_var_perc = result_var_perc.collect()
 
 for i in list_var_perc:
