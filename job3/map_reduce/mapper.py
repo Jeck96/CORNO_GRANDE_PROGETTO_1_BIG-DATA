@@ -4,8 +4,8 @@ import sys
 import csv
 import pydoop.hdfs as hdfs
 import json
+import costanct as C
 
-tirennio = range(2016,2019)
 
 azienda_map = {}
 with hdfs.open('input/historical_stocks.csv','rt') as csv_file:
@@ -30,5 +30,5 @@ for line in sys.stdin:
     ticker,_,close,_,_,_,_,data = azione
     anno_azione = int(data.split('-')[0])
     #if (anno_azione>=2016 and anno_azione<=2018):
-    if (anno_azione in tirennio):
-        print(f'{ticker},{toJson(azione)}')
+    if (anno_azione in C.TRIENNIO):
+        print(f'{toJson(azione)}')
