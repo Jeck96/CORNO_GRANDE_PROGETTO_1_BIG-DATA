@@ -35,6 +35,7 @@ def print_dict(dic):
         print("\n")
 
 anni_map={}
+variazioni_list = []
 for k in dizionario:
     anni_map[C.A1] = []
     anni_map[C.A2] = []
@@ -43,14 +44,23 @@ for k in dizionario:
         anno_azione = int(v['date'].split('-')[0])
         anni_map[anno_azione].append(v)
     variazioni_annue = {}
+    flag = True
     for anno in C.TRIENNIO:
         if anni_map[anno] != []:
             anni_map[anno] = sorted(anni_map[anno],key=lambda a: a['date'])
             initial_price = float(anni_map[anno][0]['close'])
             final_price = float(anni_map[anno][len(anni_map[anno])-1]['close'])
-            variazioni_annue[anno] = round(100*(final_price-initial_price)/initial_price,2)
+            variazioni_annue[anno] = round(100*(final_price-initial_price)/initial_price,0)
         else:
-            variazioni_annue[anno] = None
-    print(f'{k}:\n{C.A1}:{variazioni_annue[C.A1]},{C.A2}:{variazioni_annue[C.A2]},{C.A3}:{variazioni_annue[C.A3]}')
+            flag = False
+    if(flag):
+        tmp = (k,(variazioni_annue[C.A1],variazioni_annue[C.A2],variazioni_annue[C.A3]))
+        variazioni_list.append(tmp)
+    #print(f'{k}:\n{C.A1}:{variazioni_annue[C.A1]},{C.A2}:{variazioni_annue[C.A2]},{C.A3}:{variazioni_annue[C.A3]}')
+del dizionario
+variazioni_list = sorted(variazioni_list,key=lambda x: (x[1][0],x[1][1],x[1][2]),reverse=True)
+for v in variazioni_list:
+    print(v)
+
 #print_dict(dizionario)
     
