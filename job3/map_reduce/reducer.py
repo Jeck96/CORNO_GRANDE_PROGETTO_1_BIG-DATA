@@ -29,11 +29,12 @@ for line in sys.stdin:
 
 def print_dict(dic):
     for k in dic:
-        print(k)
+        print(k,dic[k])
+        """
         for v in dic[k]:
             print('\t',v)
         print("\n")
-
+        """
 anni_map={}
 variazioni_list = []
 for k in dizionario:
@@ -58,9 +59,19 @@ for k in dizionario:
         variazioni_list.append(tmp)
     #print(f'{k}:\n{C.A1}:{variazioni_annue[C.A1]},{C.A2}:{variazioni_annue[C.A2]},{C.A3}:{variazioni_annue[C.A3]}')
 del dizionario
-variazioni_list = sorted(variazioni_list,key=lambda x: (x[1][0],x[1][1],x[1][2]),reverse=True)
-for v in variazioni_list:
+#variazioni_list = sorted(variazioni_list,key=lambda x: (x[1][0],x[1][1],x[1][2]),reverse=True)
+dizionario_triplette = {}
+for nome,tripletta in variazioni_list:
+    if(dizionario_triplette.get(tripletta)):
+        dizionario_triplette[tripletta].append(nome)
+    else:
+        dizionario_triplette[tripletta] = [nome]
+result_list = []
+for k in dizionario_triplette:
+    result_list.append((dizionario_triplette[k],k))
+del dizionario_triplette
+result_list = sorted(result_list,key=lambda c: len(c[0]))
+for v in result_list:
     print(v)
-
-#print_dict(dizionario)
+#print_dict(dizionario_triplette)
     

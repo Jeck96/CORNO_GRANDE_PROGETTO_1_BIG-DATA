@@ -1,2 +1,0 @@
-hdfs dfs -rm -r output/job3_res_test
-hadoop jar /home/adfr/Documenti/hadoop-3.2.1/hadoop-streaming-3.2.1.jar -mapper mapper.py -reducer reducer.py -input input/test-medio_update.csv -output output/job3_res_test
