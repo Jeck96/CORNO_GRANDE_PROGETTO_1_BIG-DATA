@@ -1,0 +1,5 @@
+A1 = 2016
+A2 = 2017
+A3 = 2018
+ANNI = [A1,A2,A3]
+TRIENNIO = range(A1,A3+1)
