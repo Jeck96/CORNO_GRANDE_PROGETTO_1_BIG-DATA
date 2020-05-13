@@ -1,4 +1,5 @@
 from pyspark.sql import SparkSession
+import costanct as C
 
 spark = SparkSession.builder.appName("Python Spark job 3 for Big Data project").config("spark.some.config.option", "some-value").getOrCreate()
 
