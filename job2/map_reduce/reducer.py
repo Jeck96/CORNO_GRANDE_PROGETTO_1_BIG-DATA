@@ -3,6 +3,7 @@ import sys
 import pandas as pd
 
 """
+Questo è l'elemento dizionario associato a ciascuna chiave (simbolo_azione,anno) che arriva in input
 dic = {
      'data_iniziale': data_iniziale,
      'prezzo_iniziale': prezzo_iniziale,
@@ -13,6 +14,7 @@ dic = {
      'count': count
 }
 """
+
 azioni_per_anno = {}
 
 for line in sys.stdin:
@@ -30,12 +32,12 @@ results = []
 for k in azioni_per_anno:
 
     azioni_per_anno[k] = sorted(azioni_per_anno[k], key=lambda a:a['data_iniziale'])
-    data_iniziale = azioni_per_anno[k][0]['date']
-    prezzo_iniziale = azioni_per_anno[k][0]['close']
+    data_iniziale = azioni_per_anno[k][0]['data_iniziale']
+    prezzo_iniziale = azioni_per_anno[k][0]['prezzo_iniziale']
 
     azioni_per_anno[k] = sorted(azioni_per_anno[k], key=lambda a:a.get['data_finale'], reverse=True)
-    data_finale = azioni_per_anno[k][len(azioni_per_anno[k])-1]['date']
-    prezzo_finale = azioni_per_anno[k][len(azioni_per_anno[k])-1]['close']
+    data_finale = azioni_per_anno[k][len(azioni_per_anno[k])-1]['data_finale']
+    prezzo_finale = azioni_per_anno[k][len(azioni_per_anno[k])-1]['prezzo_finale']
 
     somma_volume = 0
     somma_prezzo_close = 0

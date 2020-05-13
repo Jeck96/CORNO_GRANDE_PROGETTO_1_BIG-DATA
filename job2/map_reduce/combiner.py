@@ -13,6 +13,31 @@ def toJson(data_iniziale, prezzo_iniziale, data_finale, prezzo_finale, somma_vol
     }
     return json.dumps(dic)
 
+
+""""
+Questo è il dizionario in formato json che viene passato nello stream per ciascuna chiave (simbolo_azione,anno)
+dic = {   
+     "ticker" : azione[0],
+     "close" : azione[2],
+     "volume" : azione[6],
+     "date" : azione[7]
+    }
+"""
+"""
+questo dizionario conterà tutte le informazioni parziali sulle azioni (ottenute attraverso opportune operazione sui dati
+che arrivano al combiner) raggruppate per chiave (simbolo_azione,anno)
+In particolare per ciascuna chiave viene mantenuto un informazione parziale relativa
+ai soldi dati processati dal combiner che è un dizionario contenente:
+    -data_iniziale
+    -prezzo_iniziale
+    -data_finale
+    -prezzo_finale
+    -somma_volume
+    -somma_prezzo_close
+    -count                  (per tenere traccia del numero di azioni con la stessa chiave, utile nel reducer 
+                             per il calcolo della media)
+"""
+
 azioni_per_anno = {}
 
 for line in sys.stdin:
@@ -48,6 +73,6 @@ for k in azioni_per_anno:
 #   info_azioni_per_anno[k] = {'data_iniziale':data_iniziale, 'prezzo_iniziale':prezzo_iniziale,
 #                                'data_finale':data_finale, 'prezzo_finale':prezzo_finale, 'somma_volume':somma_volume}
 
-    print('%s,%s'% (k,toJson(data_iniziale,prezzo_iniziale,data_finale,prezzo_finale,somma_volume,count)))
+    print('%s,%s' % ( k, toJson(data_iniziale,prezzo_iniziale,data_finale,prezzo_finale,somma_volume,count) ))
 
 
