@@ -43,11 +43,14 @@ for anno in C.ANNI:
     #rdd_variazione.foreach(lambda a: print(a[0],a[1],"%"))
 #rdd_tot(k,v)-> k:nome_azienda, v: [variazione1,variazione2,variazione3]
 rdd_tot = rdd_tot.groupByKey()
+rdd_tot = rdd_tot.map(lambda row: (row[0],list(row[1]))).filter(lambda a: len(a[1])==3).map(lambda row: (row[0],(row[1][0],row[1][1],row[1][2])))
 #inverto i valori della coppia e ragruppo, così aggrego per Tripletta
 rdd_tot = rdd_tot.map(lambda row: (row[1],row[0])).groupByKey()
-#rdd_tot.saveAsTextFile("output")
+#rdd_tot.foreach(lambda a: print(a))
+#rdd_tot.saveAsTextFile("output_2")
+
 list_tot = rdd_tot.collect()
-#list_tot = sorted(list_tot, key= lambda a: a[0],reverse=True)
+list_tot = sorted(list_tot, key= lambda a: len(a[1]),reverse=True)
 file_name = "output.txt"
 fo = open(file_name,'w')
 for (k,v) in list_tot:
