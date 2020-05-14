@@ -70,8 +70,8 @@ result_list = []
 for k in dizionario_triplette:
     result_list.append((dizionario_triplette[k],k))
 del dizionario_triplette
-result_list = sorted(result_list,key=lambda c: len(c[0]))
-for v in result_list:
-    print(v)
+result_list = sorted(result_list,key=lambda c: len(c[0]),reverse=True)
+for a,v in result_list:
+    print(f'{a}->{{{C.A1}:{v[0]}%, {C.A2}:{v[1]}% ,{C.A3}:{v[2]}%}}')
 #print_dict(dizionario_triplette)
     
