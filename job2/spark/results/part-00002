@@ -1,2 +1,2 @@
-(('PIHPP', 'FINANCE', '2013'), [0.7725335239045564, 158850.0, 0.019999504089399878])
-(('SRCE', 'FINANCE', '2013'), [0.0, 76800.0, 0.0])
+(('TECHNOLOGY', '2013'), {'var_annuale_media': 0.7725335239045564, 'volume_medio': 121500.0, 'var_giornaliera': 11.676666259765634})
+(('FINANCE', '2014'), {'var_annuale_media': 3.6363642368656617, 'volume_medio': 290600.0, 'var_giornaliera': 11.5500001907349})

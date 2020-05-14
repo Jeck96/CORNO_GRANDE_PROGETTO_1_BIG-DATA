@@ -15,8 +15,12 @@ def toJson(data_iniziale, prezzo_iniziale, data_finale, prezzo_finale, somma_vol
      'count': count
     }
     return json.dumps(dic)
-
-
+def toJsonChiave(k1,k2):
+    diz = {
+        'k1':k1,
+        'k2':k2
+    }
+    return json.dumps(diz)
 """"
 Questo è il dizionario in formato json che viene passato nello stream per ciascuna chiave (simbolo_azione,anno)
 dic = {   
@@ -43,10 +47,12 @@ In particolare per ciascuna chiave viene mantenuta un'informazione parziale rela
 azioni_per_anno = {}
 
 for line in sys.stdin:
-    line = line.split(';',1)
-    chiave = line[0]
-    azione  = json.loads(line[1])
-    #print("prima dell'if")
+    a = line.split(';',1)
+    chiave = json.loads(a[0])
+    #print(f'{k1},{k2}')
+    chiave = (list(chiave.values())[0],list(chiave.values())[1])
+    azione  = json.loads(a[1])
+    #print(chiave)
     if azioni_per_anno.get(chiave):
         azioni_per_anno[chiave].append(azione)
         #print("\n\n\n dentor if")
@@ -77,5 +83,5 @@ for k in azioni_per_anno:
 #   info_azioni_per_anno[k] = {'data_iniziale':data_iniziale, 'prezzo_iniziale':prezzo_iniziale,
 #                                'data_finale':data_finale, 'prezzo_finale':prezzo_finale, 'somma_volume':somma_volume}
 
-    print(f'{k};{toJson(data_iniziale,prezzo_iniziale,data_finale,prezzo_finale,somma_volume,somma_prezzo_close,count)}' )
+    print(f'{toJsonChiave(k[0],k[1])};{toJson(data_iniziale,prezzo_iniziale,data_finale,prezzo_finale,somma_volume,somma_prezzo_close,count)}' )
     #print(k,toJson(data_iniziale, prezzo_iniziale, data_finale, prezzo_finale, somma_volume, count))

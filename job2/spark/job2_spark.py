@@ -23,7 +23,7 @@ settori.foreach(lambda a: print (a))
 azioni_modificato è un RDD così costruito: 
     -Da azioni applichiamo un filter per rimuove le azioni più vecchie del 2008
     -Applichiamo un map per creare una coppia chiave valore, in particolare:
-        -K è la coppia simbolo azione e anno(rispettivamente a[0] e a[7])( anno,preso dalla data lasciando solo l'anno)
+        -K è la coppia (simbolo_azione,anno) (rispettivamente a[0] e a[7])
         -V è un dizionario in cui mettiamo 
                 -data_iniziale
                 -prezzo_iniziale (prezzo di chiusura)
@@ -100,55 +100,71 @@ qui si definisce un primo risultato ovvero per ciascun simobolo_azione in ciascu
     -variazione media giornaliera
 """
 def rid_per_aa(a):
-    a_finale=(a[0], [( 100*(a[1][0].get('prezzo_finale')-a[1][0].get('prezzo_iniziale'))/a[1][0].get('prezzo_iniziale')),
-                     a[1][0].get('volume')/a[1][1],a[1][0].get('var_giornaliera')/a[1][1]])
+    a_finale=(a[0],{'var_annuale':(100*(a[1][0].get('prezzo_finale')-a[1][0].get('prezzo_iniziale'))/a[1][0].get('prezzo_iniziale')),
+                     'somma_volume':a[1][0].get('volume'),
+                    'somma_prezzo_close':a[1][0].get('var_giornaliera'),
+                    'count':a[1][1]})
     return a_finale
-
 """
-result sarà fatto in questo modo: ((ticker,anno),[variazione_annuale,volume_medio,var_giornaliera_media]
+result sarà fatto in questo modo: ((ticker,anno),{var_annuale,somma_volume,somma_prezzo_close,count})
 """
 result = unione.map(rid_per_aa)
 
+#print("\nresult:")
+#result.foreach(lambda a: print(a))
 """
 Adesso per includere le aziende e quindi i settori operiamo un map sull'RDD result così da avere come chiave
 solo il ticker per poter fare il join con l'RDD settori_modificato. Successivamente  eseguiremo un altro map che avrà come
 chiave anno e settore, così da avere i risultati per ciascun settore
 """
-result = result.map(lambda a:(a[0][0],[a[0][1],a[1][0],a[1][1],a[1][2]]))
+result = result.map(lambda a:(a[0][0],[ a[0][1],a[1] ]))
 
 settori_modificato = settori.map(lambda s:(s[0],s[3]))
 
 result_per_settore = result.join(settori_modificato)
+print("\nresult_per_settore:")
+result_per_settore.foreach(lambda a: print(a))
 """
-In questo map definiamo la nuova chiave che sarà (simbolo_azione,settore,anno) e come valore avremo
-    -variazione_annuale, volume medio e variazione media giornaliera( quest ultime calcolate per simbolo_azione e anno)
+#In questo map definiamo la nuova chiave che sarà (settore,anno) e come valore avremo
+#    -var_annuale
+#    -somma_volume
+#    -somma_prezzo_close
+#    -count
 """
-result_per_settore = result_per_settore.map(lambda az_set: ( (az_set[0],az_set[1][1],az_set[1][0][0]),
-                                                        [ az_set[1][0][1], az_set[1][0][2], az_set[1][0][3]]))
+result_per_settore = result_per_settore.map(lambda az_set: ( (az_set[1][1],az_set[1][0][0]),
+                                                              az_set[1][0][1]))
 #stampa di test
 print("\nresult per settore:\n")
 result_per_settore.foreach(lambda a: print(a))
 
+def red_per_settore(d1,d2):
+    d = {
+    'var_annuale':d1['var_annuale']+d2['var_annuale'],
+    'somma_volume': d1['somma_volume']+d2['somma_volume'],
+    'somma_prezzo_close':d1['somma_prezzo_close'] + d2['somma_prezzo_close'],
+    'count': d1['count']+d2['count']
+    }
+    return d
+
+result_per_settore  = result_per_settore.reduceByKey(red_per_settore)
+
+
 """
-questo count ci servirà per eseguire il conteggio di tutte le tuple che hanno la stessa chiave per poi calcolare
-variazione_annuale medie  volume medio e variazione_giornaliera media per ciascun settore per ogni anno
+#questo count ci servirà per eseguire il conteggio di tutte le tuple che hanno la stessa chiave per poi calcolare
+#variazione_annuale medie  volume medio e variazione_giornaliera media per ciascun settore per ogni anno
 """
 count_per_settore = result_per_settore.groupByKey().map(lambda a: (a[0],len(list(a[1]))))
-
-
-result_per_settore  = result_per_settore.reduceByKey(lambda v1,v2: [v1[0]+v2[0],v1[1]+v2[1],v1[2]+v2[2]])
-
-result_finale = result_per_settore.join(count_per_settore)
-
+result_per_settore =result_per_settore.join(count_per_settore)
+print("\nresult per settore:")
+result_per_settore.foreach(lambda a: print(a))
 """
-In quest'ultima operazione viene calcolato il risultato finale andando a dividere le somme eseguite nell'operazione
-di cui sopra, per il numero di occorrenze di ogni chiave e quindi, per avere una media 
+#In quest'ultima operazione viene calcolato il risultato finale andando a dividere le somme eseguite nell'operazione
+#di cui sopra, per il numero di occorrenze di ogni chiave e quindi, per avere una media
 """
-result_finale = result_finale.map(lambda a:(a[0],[
-                                                a[1][0][0]/a[1][1],
-                                                a[1][0][1]/a[1][1],
-                                                a[1][0][2]/a[1][1]
-                                                ]))
+result_finale = result_per_settore.map(lambda a:(a[0],{'var_annuale_media':a[1][0]['var_annuale']/a[1][1],
+                                                  'volume_medio':a[1][0]['somma_volume']/a[1][0]['count'],
+                                                  'var_giornaliera':a[1][0]['somma_prezzo_close']/a[1][0]['count']
+                                                  }))
 print("\nresult finale:\n")
 result_finale.foreach(lambda a: print(a))
-#result_finale.saveAsTextFile('results')
+result_finale.saveAsTextFile('results')
