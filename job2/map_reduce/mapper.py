@@ -1,9 +1,13 @@
+#!/usr/bin/python3
+"""mapper.py"""
+
 import pandas as pd
 import sys
 import json
 
 def toJson(azione):
-    dic = {   "ticker" : azione[0],
+    dic = {
+     "ticker" : azione[0],
      #"open" : azione[1],
      "close" : azione[2],
      #"low" : azione[4],
@@ -20,6 +24,7 @@ def toJson(azione):
 #azioni = azioni.values
 
 for line in sys.stdin:
-    anno_azione = int(line[7].split('-')[0])
+    azione = line.split(',')
+    anno_azione = int(azione[7].split('-')[0])
     if(anno_azione>=2008):
-        print('%s,%s' % ((line[0], anno_azione), toJson(line)))
+        print(f' {(azione[0],anno_azione)};{toJson(azione)}')

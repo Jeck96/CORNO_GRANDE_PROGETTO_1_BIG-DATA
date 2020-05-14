@@ -4,6 +4,7 @@
 import sys
 import json
 
+
 def toJson(azione):
     dic = {   "ticker" : azione[0],
      #"open" : azione[1], 
@@ -14,7 +15,6 @@ def toJson(azione):
     "date" : azione[7],
     }
     return json.dumps(dic)
-
 
 for line in sys.stdin:
     azione = line.split(',')

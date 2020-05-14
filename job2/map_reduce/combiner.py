@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+"""combiner.py"""
+
 import sys
 import json
 
@@ -24,10 +27,10 @@ dic = {
     }
 """
 """
-questo dizionario conterà tutte le informazioni parziali sulle azioni (ottenute attraverso opportune operazione sui dati
-che arrivano al combiner) raggruppate per chiave (simbolo_azione,anno)
-In particolare per ciascuna chiave viene mantenuto un informazione parziale relativa
-ai soldi dati processati dal combiner che è un dizionario contenente:
+Il dizionario azioni_per_anno conterà tutte le informazioni parziali sulle azioni (ottenute attraverso opportune
+operazione sui dati che arrivano al combiner) raggruppate per chiave (simbolo_azione,anno)
+In particolare per ciascuna chiave viene mantenuta un'informazione parziale relativa
+(ai soli dati processati dal combiner) che è un dizionario contenente:
     -data_iniziale
     -prezzo_iniziale
     -data_finale
@@ -37,22 +40,23 @@ ai soldi dati processati dal combiner che è un dizionario contenente:
     -count                  (per tenere traccia del numero di azioni con la stessa chiave, utile nel reducer 
                              per il calcolo della media)
 """
-
 azioni_per_anno = {}
 
 for line in sys.stdin:
-    line = line.split(',')
+    line = line.split(';',1)
     chiave = line[0]
-    azione  = json.load(line[1])
-
+    azione  = json.loads(line[1])
+    #print("prima dell'if")
     if azioni_per_anno.get(chiave):
         azioni_per_anno[chiave].append(azione)
+        #print("\n\n\n dentor if")
     else:
         azioni_per_anno[chiave] = [azione]
+        #print("\n\n\ndentro else")
 
-#info_azioni_per_anno = {}
+#print("\n\n\nfuori dal ciclo sys")
 for k in azioni_per_anno:
-
+    #print("\n\n\ndentro ciclo calcolo:")
     azioni_per_anno[k] = sorted(azioni_per_anno[k], key=lambda a: a['date'])
 
     data_iniziale = azioni_per_anno[k][0]['date']
@@ -64,15 +68,14 @@ for k in azioni_per_anno:
     somma_volume = 0
     somma_prezzo_close = 0
     count = 0
-
+    #print("\n prima ciclo volume")
     for a in azioni_per_anno[k]:
-        somma_volume += int(a['volume'])
-        somma_prezzo_close += int(a['close'])
+        somma_volume += float(a['volume'])
+        somma_prezzo_close += float(a['close'])
         count += 1
-
+    #print("\n dopo ciclo volume")
 #   info_azioni_per_anno[k] = {'data_iniziale':data_iniziale, 'prezzo_iniziale':prezzo_iniziale,
 #                                'data_finale':data_finale, 'prezzo_finale':prezzo_finale, 'somma_volume':somma_volume}
 
-    print('%s,%s' % ( k, toJson(data_iniziale,prezzo_iniziale,data_finale,prezzo_finale,somma_volume,count) ))
-
-
+    print(f'{k};{toJson(data_iniziale,prezzo_iniziale,data_finale,prezzo_finale,somma_volume,somma_prezzo_close,count)}' )
+    #print(k,toJson(data_iniziale, prezzo_iniziale, data_finale, prezzo_finale, somma_volume, count))
