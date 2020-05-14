@@ -34,14 +34,14 @@ for anno in C.ANNI:
     rdd_variazione = rdd_base.filter(lambda row: row['date'][0:4]==str(anno)).map(lambda row: (row['name'],{\
         "first_date":row['date'],"first_price":row['close'],"last_date":row['date'],"last_price":row['close']}))
     rdd_variazione = rdd_variazione.reduceByKey(reduce_variazione_annua)
-    #rdd_variazione(k,v)-> k:nome_azione, v: variazione
+    #rdd_variazione(k,v)-> k:nome_azienda, v: variazione
     rdd_variazione = rdd_variazione.map(lambda c: (c[0],int(100*(c[1]['first_price']-c[1]['last_price'])/c[1]['first_price'])))
     if(anno == C.A1):
         rdd_tot = rdd_variazione
     else:
         rdd_tot = rdd_tot.union(rdd_variazione)
     #rdd_variazione.foreach(lambda a: print(a[0],a[1],"%"))
-#rdd_tot(k,v)-> k:nome_azione, v: [variazione1,variazione2,variazione3]
+#rdd_tot(k,v)-> k:nome_azienda, v: [variazione1,variazione2,variazione3]
 rdd_tot = rdd_tot.groupByKey()
 #inverto i valori della coppia e ragruppo, così aggrego per Tripletta
 rdd_tot = rdd_tot.map(lambda row: (row[1],row[0])).groupByKey()
