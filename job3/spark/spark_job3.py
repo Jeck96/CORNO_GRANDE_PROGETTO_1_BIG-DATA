@@ -35,7 +35,7 @@ for anno in C.ANNI:
         "first_date":row['date'],"first_price":row['close'],"last_date":row['date'],"last_price":row['close']}))
     rdd_variazione = rdd_variazione.reduceByKey(reduce_variazione_annua)
     #rdd_variazione(k,v)-> k:nome_azienda, v: variazione
-    rdd_variazione = rdd_variazione.map(lambda c: (c[0],int(100*(c[1]['first_price']-c[1]['last_price'])/c[1]['first_price'])))
+    rdd_variazione = rdd_variazione.map(lambda c: (c[0],round(100*(c[1]['last_price']-c[1]['first_price'])/c[1]['first_price'],0)))
     if(anno == C.A1):
         rdd_tot = rdd_variazione
     else:
@@ -43,10 +43,9 @@ for anno in C.ANNI:
     #rdd_variazione.foreach(lambda a: print(a[0],a[1],"%"))
 #rdd_tot(k,v)-> k:nome_azienda, v: [variazione1,variazione2,variazione3]
 rdd_tot = rdd_tot.groupByKey()
-rdd_tot = rdd_tot.map(lambda row: (row[0],list(row[1]))).filter(lambda a: len(a[1])==3).map(lambda row: (row[0],(row[1][0],row[1][1],row[1][2])))
+rdd_tot = rdd_tot.map(lambda row: (row[0],tuple(row[1]))).filter(lambda a: len(a[1])==3)
 #inverto i valori della coppia e ragruppo, così aggrego per Tripletta
 rdd_tot = rdd_tot.map(lambda row: (row[1],row[0])).groupByKey()
-#rdd_tot.foreach(lambda a: print(a))
 #rdd_tot.saveAsTextFile("output_2")
 
 list_tot = rdd_tot.collect()
@@ -56,7 +55,7 @@ fo = open(file_name,'w')
 for (k,v) in list_tot:
     for i in k:
         fo.write(str(i))
-        fo.write("%  ")
+        fo.write("% ")
     fo.write("{")
     for a in v:
         fo.write(a)
