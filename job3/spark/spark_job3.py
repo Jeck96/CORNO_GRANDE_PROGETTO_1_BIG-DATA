@@ -41,28 +41,13 @@ for anno in C.ANNI:
     else:
         rdd_tot = rdd_tot.union(rdd_variazione)
     #rdd_variazione.foreach(lambda a: print(a[0],a[1],"%"))
+
 #rdd_tot(k,v)-> k:nome_azienda, v: [variazione1,variazione2,variazione3]
+
 rdd_tot = rdd_tot.groupByKey()
 rdd_tot = rdd_tot.map(lambda row: (row[0],tuple(row[1]))).filter(lambda a: len(a[1])==3)
-#inverto i valori della coppia e ragruppo, così aggrego per Tripletta
-rdd_tot = rdd_tot.map(lambda row: (row[1],row[0])).groupByKey()
-#rdd_tot.saveAsTextFile("output_2")
 
-list_tot = rdd_tot.collect()
-list_tot = sorted(list_tot, key= lambda a: len(a[1]),reverse=True)
-file_name = "output.txt"
-fo = open(file_name,'w')
-for (k,v) in list_tot:
-    for i in k:
-        fo.write(str(i))
-        fo.write("% ")
-    fo.write("{")
-    for a in v:
-        fo.write(a)
-        fo.write(" | ")
-    fo.write("}\n")
-fo.close()
-"""
-print("\nresult finale:\n")
-rdd_base.foreach(lambda a: print(a))
-"""
+#inverto i valori della coppia e ragruppo, così aggrego per Tripletta
+rdd_tot = rdd_tot.map(lambda row: (row[1],row[0])).groupByKey().map(lambda row: (list(row[1]),row[0]))
+rdd_tot = rdd_tot.sortBy(lambda row: len(row[0]), ascending=False)
+rdd_tot.saveAsTextFile("output_2")
