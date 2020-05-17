@@ -1,0 +1,4 @@
+(('CONSUMER NON-DURABLES', '2012'), {'var_annuale_media': 18.242128510125532, 'volume_medio': 1237583.7535081776, 'var_giornaliera': 29.79909680479683})
+(('CONSUMER DURABLES', '2008'), {'var_annuale_media': -39.453647967444, 'volume_medio': 776180.4780184517, 'var_giornaliera': 22.224244186469843})
+(('CAPITAL GOODS', '2014'), {'var_annuale_media': 3.8197070801351596, 'volume_medio': 910038.1344826252, 'var_giornaliera': 42.847836783745514})
+(('TRANSPORTATION', '2017'), {'var_annuale_media': 12.208430713233232, 'volume_medio': 964557.6489088074, 'var_giornaliera': 81.58107063923603})

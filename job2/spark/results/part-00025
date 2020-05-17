@@ -1,0 +1,5 @@
+(('TECHNOLOGY', '2018'), {'var_annuale_media': 87.24049036300786, 'volume_medio': 1628527.7993042716, 'var_giornaliera': 43.86740957618967})
+(('FINANCE', '2008'), {'var_annuale_media': -30.366170647208744, 'volume_medio': 1581469.937793704, 'var_giornaliera': 43.06860307518836})
+(('HEALTH CARE', '2018'), {'var_annuale_media': 10.518137942796418, 'volume_medio': 901967.2047827973, 'var_giornaliera': 32.53066763087502})
+(('HEALTH CARE', '2009'), {'var_annuale_media': 125.27278062820103, 'volume_medio': 1419234.0569169342, 'var_giornaliera': 56.28222238898266})
+(('CAPITAL GOODS', '2018'), {'var_annuale_media': 5.797822974514632, 'volume_medio': 856807.472994857, 'var_giornaliera': 61.79440332541768})

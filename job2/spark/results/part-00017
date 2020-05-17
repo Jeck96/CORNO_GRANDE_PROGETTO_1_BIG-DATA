@@ -1,0 +1,5 @@
+(('MISCELLANEOUS', '2015'), {'var_annuale_media': 2.377095402017516, 'volume_medio': 1017054.0527303811, 'var_giornaliera': 45.02107041384567})
+(('MISCELLANEOUS', '2011'), {'var_annuale_media': -7.469294976934603, 'volume_medio': 1331125.1239562996, 'var_giornaliera': 31.80113322635923})
+(('CONSUMER NON-DURABLES', '2008'), {'var_annuale_media': -37.624015039330054, 'volume_medio': 1845606.2231773154, 'var_giornaliera': 23.501965095907476})
+(('CONSUMER NON-DURABLES', '2018'), {'var_annuale_media': 10.516359221917488, 'volume_medio': 1223517.1754731748, 'var_giornaliera': 42.52822902009216})
+(('CONSUMER DURABLES', '2011'), {'var_annuale_media': -0.9394639894974619, 'volume_medio': 585705.2312248462, 'var_giornaliera': 23.286402215249765})

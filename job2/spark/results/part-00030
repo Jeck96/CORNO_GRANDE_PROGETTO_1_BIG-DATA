@@ -1,0 +1,6 @@
+(('TECHNOLOGY', '2017'), {'var_annuale_media': 63.954369241957586, 'volume_medio': 1507362.0885604273, 'var_giornaliera': 38.17259705471394})
+(('TECHNOLOGY', '2015'), {'var_annuale_media': 26.510198014536865, 'volume_medio': 1558132.8090677767, 'var_giornaliera': 33.9848251397627})
+(('TECHNOLOGY', '2010'), {'var_annuale_media': 30.927742588478544, 'volume_medio': 2931206.8650739426, 'var_giornaliera': 22.288489315607425})
+(('FINANCE', '2016'), {'var_annuale_media': 29.676508036977282, 'volume_medio': 951087.9098632522, 'var_giornaliera': 62.69708493064569})
+(('TRANSPORTATION', '2011'), {'var_annuale_media': -18.54691451594405, 'volume_medio': 1216787.8362632352, 'var_giornaliera': 91.58842951034882})
+(('TRANSPORTATION', '2015'), {'var_annuale_media': -22.68128920600009, 'volume_medio': 1145166.0852328197, 'var_giornaliera': 38.55247294917033})

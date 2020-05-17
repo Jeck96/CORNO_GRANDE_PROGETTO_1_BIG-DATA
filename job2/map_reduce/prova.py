@@ -1,6 +1,11 @@
 import sys
 import pandas as pd
 
+"""
+QUESTO E' UN FILE UTILIZZATO SOLO PER TESTARE ALCUNE OPERAZIONI IN FASE DI ELABORAZIONE DEL JOB 2 IN MAP-REDUCE,
+NON È ASSOLUTAMENTE NECESSARIO PER L'ESECUZIONE DEL JOB
+"""
+
 settori = pd.read_csv("/home/giacomo/hadoop-3.2.1/DATI_AGGIUNTIVI/BIG_DATA_PROGETTO-1/settori_test_1.csv", sep=';')
 settori = settori.values
 #for s in settori:

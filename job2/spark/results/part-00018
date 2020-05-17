@@ -1,0 +1,4 @@
+(('TECHNOLOGY', '2012'), {'var_annuale_media': 17.308872383517695, 'volume_medio': 2423862.7626984604, 'var_giornaliera': 23.675929033844923})
+(('FINANCE', '2017'), {'var_annuale_media': 13.12310108800939, 'volume_medio': 751259.9255644521, 'var_giornaliera': 48.91317353853031})
+(('MISCELLANEOUS', '2009'), {'var_annuale_media': 103.57227602560842, 'volume_medio': 1822593.074139289, 'var_giornaliera': 22.46075529181267})
+(('CONSUMER SERVICES', '2008'), {'var_annuale_media': -41.30329365132225, 'volume_medio': 1881454.7326757573, 'var_giornaliera': 52.16818656102594})
