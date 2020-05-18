@@ -1,6 +1,0 @@
-(('FINANCE', '2018'), {'var_annuale_media': 4.223464783120101, 'volume_medio': 702434.5736126429, 'var_giornaliera': 41.319502236776664})
-(('CONSUMER SERVICES', '2011'), {'var_annuale_media': 61.575450965721785, 'volume_medio': 1653583.5414046121, 'var_giornaliera': 78.60089330629597})
-(('ENERGY', '2011'), {'var_annuale_media': 4.896609332079682, 'volume_medio': 2359565.306907465, 'var_giornaliera': 242.3822430828443})
-(('ENERGY', '2014'), {'var_annuale_media': -17.626679168076752, 'volume_medio': 1882700.0876855124, 'var_giornaliera': 245.842023083636})
-(('ENERGY', '2013'), {'var_annuale_media': 22.175511827280726, 'volume_medio': 1556606.3019915302, 'var_giornaliera': 229.78235884024707})
-(('CONSUMER DURABLES', '2012'), {'var_annuale_media': 19.919298025959993, 'volume_medio': 495359.594856153, 'var_giornaliera': 23.351258611526788})

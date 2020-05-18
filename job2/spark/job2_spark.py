@@ -1,11 +1,16 @@
 #from pyspark.sql import SparkSession
 import pyspark as ps
+from datetime import datetime
+
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
+print("Current Time =", current_time)
 
 spark = ps.sql.SparkSession.builder.appName("Python Spark SQL basic example").\
                                     config("spark.some.config.option", "some-value").getOrCreate()
 
 #importiamo il dataset sulle azioni
-df_azioni=spark.read.csv('/home/giacomo/hadoop-3.2.1/DATI_AGGIUNTIVI/BIG_DATA_PROGETTO-1/historical_stock_prices.csv',
+df_azioni=spark.read.csv('/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/historical_stock_prices.csv',
                          inferSchema="true", header="true")
 
 #importiamo il dataset sui settori
@@ -200,3 +205,8 @@ result_finale = result_per_settore.map(lambda a:(a[0],{'var_annuale_media':a[1][
 #print("\nresult finale:\n")
 #result_finale.foreach(lambda a: print(a))
 result_finale.saveAsTextFile('results')
+
+
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
+print("Current Time =", current_time)

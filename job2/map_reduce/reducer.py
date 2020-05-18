@@ -140,6 +140,5 @@ for k in settori_per_anno:
                                         'volume_medio':somma_volume/somma_count,
                                         'var_giornaliera_media':somma_prezzo_close/somma_count}
                                     })
-s
 for s in result_settori_per_anno:
     print(s)
