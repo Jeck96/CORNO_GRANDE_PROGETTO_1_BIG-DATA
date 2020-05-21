@@ -1,0 +1,157 @@
+FINANCE	
+CONSUMER SERVICES	
+TECHNOLOGY	
+PUBLIC UTILITIES	
+CAPITAL GOODS	
+BASIC INDUSTRIES	
+HEALTH CARE	
+CONSUMER DURABLES	
+nan	
+ENERGY	
+MISCELLANEOUS	
+SECTOR	
+TRANSPORTATION	
+CONSUMER NON-DURABLES	
+{('CAPITAL GOODS', 2008): {'variazione_annuale_media': -46.359723507888745, 'volume_medio': 1374880.178548569, 'var_giornaliera_media': 28.11070955579296}}	
+{('CAPITAL GOODS', 2009): {'variazione_annuale_media': 75.65463112623866, 'volume_medio': 1475531.8099868915, 'var_giornaliera_media': 19.903486075594603}}	
+{('CAPITAL GOODS', 2010): {'variazione_annuale_media': 34.97814691343652, 'volume_medio': 1343253.3772088205, 'var_giornaliera_media': 25.5774492203144}}	
+{('CAPITAL GOODS', 2011): {'variazione_annuale_media': -14.773490578482855, 'volume_medio': 1284086.5076668286, 'var_giornaliera_media': 28.76126210698626}}	
+{('CAPITAL GOODS', 2012): {'variazione_annuale_media': 25.273997489154954, 'volume_medio': 1072147.0621196895, 'var_giornaliera_media': 29.118293446691315}}	
+{('CAPITAL GOODS', 2013): {'variazione_annuale_media': 45.5590782445703, 'volume_medio': 983379.6914194732, 'var_giornaliera_media': 36.53692673403182}}	
+{('CAPITAL GOODS', 2014): {'variazione_annuale_media': 3.8197070801351587, 'volume_medio': 910038.1344826252, 'var_giornaliera_media': 42.847836783745514}}	
+{('CAPITAL GOODS', 2015): {'variazione_annuale_media': 441.9065332909622, 'volume_medio': 905871.6210360131, 'var_giornaliera_media': 42.59790690495322}}	
+{('CAPITAL GOODS', 2016): {'variazione_annuale_media': 27.640410313319805, 'volume_medio': 914705.143092366, 'var_giornaliera_media': 42.776354079364204}}	
+{('CAPITAL GOODS', 2017): {'variazione_annuale_media': 21.08734883278977, 'volume_medio': 794086.6130974249, 'var_giornaliera_media': 55.05270587386024}}	
+{('CAPITAL GOODS', 2018): {'variazione_annuale_media': 5.797822974514632, 'volume_medio': 856807.472994857, 'var_giornaliera_media': 61.79440332541768}}	
+{('BASIC INDUSTRIES', 2008): {'variazione_annuale_media': -42.05233135508783, 'volume_medio': 2315405.227442191, 'var_giornaliera_media': 39.99813107884423}}	
+{('BASIC INDUSTRIES', 2009): {'variazione_annuale_media': 82.32339915664302, 'volume_medio': 2440724.693857303, 'var_giornaliera_media': 25.697429893648433}}	
+{('BASIC INDUSTRIES', 2010): {'variazione_annuale_media': 32.89314127294193, 'volume_medio': 2017339.2224224643, 'var_giornaliera_media': 32.35048565403827}}	
+{('BASIC INDUSTRIES', 2011): {'variazione_annuale_media': -11.342341652346864, 'volume_medio': 1853541.4648080438, 'var_giornaliera_media': 42.74221191454349}}	
+{('BASIC INDUSTRIES', 2012): {'variazione_annuale_media': 8.187196209128931, 'volume_medio': 1552641.0886761926, 'var_giornaliera_media': 42.37323823965484}}	
+{('BASIC INDUSTRIES', 2013): {'variazione_annuale_media': 18.85214499502783, 'volume_medio': 1514508.1694624298, 'var_giornaliera_media': 133.94620746195034}}	
+{('BASIC INDUSTRIES', 2014): {'variazione_annuale_media': -3.3489674312349753, 'volume_medio': 1460847.2303746059, 'var_giornaliera_media': 109.43928937069494}}	
+{('BASIC INDUSTRIES', 2015): {'variazione_annuale_media': 123.46056027875859, 'volume_medio': 1610008.7310607336, 'var_giornaliera_media': 40.48498101082914}}	
+{('BASIC INDUSTRIES', 2016): {'variazione_annuale_media': 47.53607116736644, 'volume_medio': 1937797.2297986317, 'var_giornaliera_media': 31.397759367579244}}	
+{('BASIC INDUSTRIES', 2017): {'variazione_annuale_media': 16.693610905657547, 'volume_medio': 1557227.7717198443, 'var_giornaliera_media': 35.55569666265143}}	
+{('BASIC INDUSTRIES', 2018): {'variazione_annuale_media': -4.050795264288911, 'volume_medio': 1428835.1726318246, 'var_giornaliera_media': 37.81695023980435}}	
+{('TECHNOLOGY', 2008): {'variazione_annuale_media': -48.43302753977948, 'volume_medio': 3948537.8611955657, 'var_giornaliera_media': 24.832774448206095}}	
+{('TECHNOLOGY', 2009): {'variazione_annuale_media': 80.44534910384907, 'volume_medio': 3019629.53036149, 'var_giornaliera_media': 19.061632398356217}}	
+{('TECHNOLOGY', 2010): {'variazione_annuale_media': 30.927742588478562, 'volume_medio': 2931206.8650739426, 'var_giornaliera_media': 22.288489315607425}}	
+{('TECHNOLOGY', 2011): {'variazione_annuale_media': -10.729366394278818, 'volume_medio': 2730911.5365790296, 'var_giornaliera_media': 28.03622149955135}}	
+{('TECHNOLOGY', 2012): {'variazione_annuale_media': 17.308872383517688, 'volume_medio': 2423862.7626984604, 'var_giornaliera_media': 23.675929033844923}}	
+{('TECHNOLOGY', 2013): {'variazione_annuale_media': 52.04524937082531, 'volume_medio': 2272267.0921923704, 'var_giornaliera_media': 28.543676647940295}}	
+{('TECHNOLOGY', 2014): {'variazione_annuale_media': 132.3992842709172, 'volume_medio': 1846589.9150919758, 'var_giornaliera_media': 34.036890889446795}}	
+{('TECHNOLOGY', 2015): {'variazione_annuale_media': 26.51019801453691, 'volume_medio': 1558132.8090677767, 'var_giornaliera_media': 33.9848251397627}}	
+{('TECHNOLOGY', 2016): {'variazione_annuale_media': 351.2425808392192, 'volume_medio': 1549019.1745951965, 'var_giornaliera_media': 31.90636173964324}}	
+{('TECHNOLOGY', 2017): {'variazione_annuale_media': 63.9543692419576, 'volume_medio': 1507362.0885604273, 'var_giornaliera_media': 38.17259705471394}}	
+{('TECHNOLOGY', 2018): {'variazione_annuale_media': 87.24049036300785, 'volume_medio': 1628527.7993042716, 'var_giornaliera_media': 43.86740957618967}}	
+{('HEALTH CARE', 2018): {'variazione_annuale_media': 10.518137942796425, 'volume_medio': 901967.2047827973, 'var_giornaliera_media': 32.53066763087502}}	
+{('TRANSPORTATION', 2008): {'variazione_annuale_media': -34.97354060280177, 'volume_medio': 1901867.141500475, 'var_giornaliera_media': 1876.2985562946167}}	
+{('TRANSPORTATION', 2009): {'variazione_annuale_media': 27.58618768872029, 'volume_medio': 1773745.552798456, 'var_giornaliera_media': 419.3358372236049}}	
+{('TRANSPORTATION', 2010): {'variazione_annuale_media': 20.02340730567429, 'volume_medio': 1322128.393111076, 'var_giornaliera_media': 164.75943292272206}}	
+{('TRANSPORTATION', 2011): {'variazione_annuale_media': -18.54691451594405, 'volume_medio': 1216787.8362632352, 'var_giornaliera_media': 91.58842951034882}}	
+{('TRANSPORTATION', 2012): {'variazione_annuale_media': 8.892613142205338, 'volume_medio': 1043952.4825584356, 'var_giornaliera_media': 76.24410309342095}}	
+{('TRANSPORTATION', 2013): {'variazione_annuale_media': 50.10481357204124, 'volume_medio': 1005276.8758894833, 'var_giornaliera_media': 88.79075188995279}}	
+{('TRANSPORTATION', 2014): {'variazione_annuale_media': 11.174482567195247, 'volume_medio': 1083372.9630966345, 'var_giornaliera_media': 51.800322936979065}}	
+{('TRANSPORTATION', 2015): {'variazione_annuale_media': -22.681289206000088, 'volume_medio': 1145166.0852328197, 'var_giornaliera_media': 38.55247294917033}}	
+{('TRANSPORTATION', 2016): {'variazione_annuale_media': 42.138729208210435, 'volume_medio': 1090250.57374747, 'var_giornaliera_media': 182.52985818188077}}	
+{('TRANSPORTATION', 2017): {'variazione_annuale_media': 12.208430713233232, 'volume_medio': 964557.6489088074, 'var_giornaliera_media': 81.58107063923603}}	
+{('TRANSPORTATION', 2018): {'variazione_annuale_media': -4.162766077250878, 'volume_medio': 876992.8761947099, 'var_giornaliera_media': 38.687121291895146}}	
+{('FINANCE', 2008): {'variazione_annuale_media': -30.366170647208733, 'volume_medio': 1581469.937793704, 'var_giornaliera_media': 43.06860307518836}}	
+{('FINANCE', 2009): {'variazione_annuale_media': 31.339268650773693, 'volume_medio': 2593964.9553715657, 'var_giornaliera_media': 27.37901028555074}}	
+{('FINANCE', 2010): {'variazione_annuale_media': 7768.110407739588, 'volume_medio': 1691572.9323207105, 'var_giornaliera_media': 67.87852684668448}}	
+{('FINANCE', 2011): {'variazione_annuale_media': -8.94059434866014, 'volume_medio': 1632986.1596900003, 'var_giornaliera_media': 63.97813256615513}}	
+{('FINANCE', 2012): {'variazione_annuale_media': 23.32061542968554, 'volume_medio': 1383857.2059758333, 'var_giornaliera_media': 45.47435264653333}}	
+{('FINANCE', 2013): {'variazione_annuale_media': 33.16975919055758, 'volume_medio': 1029990.6315456012, 'var_giornaliera_media': 202.98853673857354}}	
+{('FINANCE', 2014): {'variazione_annuale_media': 36.754941424074204, 'volume_medio': 867105.7237324676, 'var_giornaliera_media': 223.0889052963477}}	
+{('FINANCE', 2015): {'variazione_annuale_media': 157.6343563613409, 'volume_medio': 848334.0137817427, 'var_giornaliera_media': 94.0302458374058}}	
+{('FINANCE', 2016): {'variazione_annuale_media': 29.67650803697731, 'volume_medio': 951087.9098632522, 'var_giornaliera_media': 62.69708493064569}}	
+{('FINANCE', 2017): {'variazione_annuale_media': 13.123101088009397, 'volume_medio': 751259.9255644521, 'var_giornaliera_media': 48.91317353853031}}	
+{('FINANCE', 2018): {'variazione_annuale_media': 4.223464783120098, 'volume_medio': 702434.5736126429, 'var_giornaliera_media': 41.319502236776664}}	
+{('CONSUMER SERVICES', 2008): {'variazione_annuale_media': -41.303293651322264, 'volume_medio': 1881454.7326757573, 'var_giornaliera_media': 52.16818656102594}}	
+{('CONSUMER SERVICES', 2009): {'variazione_annuale_media': 64.33753630036011, 'volume_medio': 2073087.268813962, 'var_giornaliera_media': 48.71813151583876}}	
+{('CONSUMER SERVICES', 2010): {'variazione_annuale_media': 27.853167787763034, 'volume_medio': 1781816.4490095505, 'var_giornaliera_media': 107.6124881712072}}	
+{('CONSUMER SERVICES', 2011): {'variazione_annuale_media': 61.575450965721814, 'volume_medio': 1653583.5414046121, 'var_giornaliera_media': 78.60089330629597}}	
+{('CONSUMER SERVICES', 2012): {'variazione_annuale_media': 16.082800128711714, 'volume_medio': 1372133.7701842869, 'var_giornaliera_media': 54.4756647309962}}	
+{('CONSUMER SERVICES', 2013): {'variazione_annuale_media': 65.25112743811984, 'volume_medio': 1264092.8977040853, 'var_giornaliera_media': 63.830810629364876}}	
+{('CONSUMER SERVICES', 2014): {'variazione_annuale_media': 85.85595147385675, 'volume_medio': 1264233.5412438852, 'var_giornaliera_media': 63.50436802750273}}	
+{('CONSUMER SERVICES', 2015): {'variazione_annuale_media': 1823.9544799991372, 'volume_medio': 1074200.8057156815, 'var_giornaliera_media': 63.297843448737794}}	
+{('CONSUMER SERVICES', 2016): {'variazione_annuale_media': 12.694307397417585, 'volume_medio': 1112267.3668587608, 'var_giornaliera_media': 60.27532540249641}}	
+{('CONSUMER SERVICES', 2017): {'variazione_annuale_media': 11.78281325117936, 'volume_medio': 1095181.063904712, 'var_giornaliera_media': 77.38525064586466}}	
+{('CONSUMER SERVICES', 2018): {'variazione_annuale_media': 33.342050322830225, 'volume_medio': 1169981.7828834706, 'var_giornaliera_media': 47.151892825298425}}	
+{('ENERGY', 2008): {'variazione_annuale_media': -47.17711109306387, 'volume_medio': 3409627.3955240925, 'var_giornaliera_media': 235.38270933168656}}	
+{('ENERGY', 2009): {'variazione_annuale_media': 50.41341026415406, 'volume_medio': 3219675.171129571, 'var_giornaliera_media': 101.1828137893235}}	
+{('ENERGY', 2010): {'variazione_annuale_media': 34.10201604394231, 'volume_medio': 2733173.5927363327, 'var_giornaliera_media': 152.2919212587048}}	
+{('ENERGY', 2011): {'variazione_annuale_media': 4.89660933207968, 'volume_medio': 2359565.306907465, 'var_giornaliera_media': 242.3822430828443}}	
+{('ENERGY', 2012): {'variazione_annuale_media': 31.568887248405705, 'volume_medio': 1959416.716688864, 'var_giornaliera_media': 194.23206754826538}}	
+{('ENERGY', 2013): {'variazione_annuale_media': 22.175511827280733, 'volume_medio': 1556606.3019915302, 'var_giornaliera_media': 229.78235884024707}}	
+{('ENERGY', 2014): {'variazione_annuale_media': -17.626679168076752, 'volume_medio': 1882700.0876855124, 'var_giornaliera_media': 245.842023083636}}	
+{('ENERGY', 2015): {'variazione_annuale_media': -30.821732941665857, 'volume_medio': 2345714.9568821136, 'var_giornaliera_media': 172.43978566501906}}	
+{('ENERGY', 2016): {'variazione_annuale_media': 76.29689950921384, 'volume_medio': 2571812.6189030493, 'var_giornaliera_media': 87.5611962794683}}	
+{('ENERGY', 2017): {'variazione_annuale_media': 2.5541557648403477, 'volume_medio': 2143303.0027406593, 'var_giornaliera_media': 37.36079825035285}}	
+{('ENERGY', 2018): {'variazione_annuale_media': 7.0942926443981005, 'volume_medio': 2295534.999301849, 'var_giornaliera_media': 29.236622468376364}}	
+{(nan, 2008): {'variazione_annuale_media': -36.9537074605868, 'volume_medio': 1435182.7562990421, 'var_giornaliera_media': 21.774278075637277}}	
+{(nan, 2009): {'variazione_annuale_media': 31.46867179079296, 'volume_medio': 1638081.203652735, 'var_giornaliera_media': 17.986794361943016}}	
+{(nan, 2010): {'variazione_annuale_media': 6.554604687107601, 'volume_medio': 2138177.359377335, 'var_giornaliera_media': 29.061403183478223}}	
+{(nan, 2011): {'variazione_annuale_media': -4.657026187996938, 'volume_medio': 2359583.700621991, 'var_giornaliera_media': 26.87846464610445}}	
+{(nan, 2012): {'variazione_annuale_media': 7.955658712554066, 'volume_medio': 2529748.0596981207, 'var_giornaliera_media': 26.046472619743646}}	
+{(nan, 2013): {'variazione_annuale_media': 4.074856935243026, 'volume_medio': 2767491.1069796747, 'var_giornaliera_media': 26.85290958377613}}	
+{(nan, 2014): {'variazione_annuale_media': 1575.7774852166679, 'volume_medio': 2608492.4611444967, 'var_giornaliera_media': 27.43068640039456}}	
+{(nan, 2015): {'variazione_annuale_media': -8.243844184309184, 'volume_medio': 259230.25052654915, 'var_giornaliera_media': 26.007607673732124}}	
+{(nan, 2016): {'variazione_annuale_media': 113.08319873708281, 'volume_medio': 241883.8371782204, 'var_giornaliera_media': 38.73383290962844}}	
+{(nan, 2017): {'variazione_annuale_media': 75.81257797810153, 'volume_medio': 197900.90165114083, 'var_giornaliera_media': 157.5960848995134}}	
+{(nan, 2018): {'variazione_annuale_media': 1163.4367221145258, 'volume_medio': 241966.86734062596, 'var_giornaliera_media': 124.9923432273362}}	
+{('CONSUMER NON-DURABLES', 2010): {'variazione_annuale_media': 27.059643917899955, 'volume_medio': 1463892.8238465996, 'var_giornaliera_media': 24.840896372817692}}	
+{('CONSUMER NON-DURABLES', 2011): {'variazione_annuale_media': -2.0078373884960783, 'volume_medio': 1389254.33171042, 'var_giornaliera_media': 27.683669930752195}}	
+{('CONSUMER NON-DURABLES', 2012): {'variazione_annuale_media': 18.24212851012553, 'volume_medio': 1237583.7535081776, 'var_giornaliera_media': 29.79909680479683}}	
+{('CONSUMER NON-DURABLES', 2013): {'variazione_annuale_media': 34.583783892838156, 'volume_medio': 1063950.4238370608, 'var_giornaliera_media': 36.02858021961976}}	
+{('CONSUMER NON-DURABLES', 2014): {'variazione_annuale_media': 7.71744407089345, 'volume_medio': 1104307.1836591389, 'var_giornaliera_media': 39.36113305592234}}	
+{('CONSUMER NON-DURABLES', 2015): {'variazione_annuale_media': -3.6623098472700204, 'volume_medio': 1153986.1556362363, 'var_giornaliera_media': 40.54247894535282}}	
+{('CONSUMER NON-DURABLES', 2016): {'variazione_annuale_media': 14.05502007127483, 'volume_medio': 1185084.7181747744, 'var_giornaliera_media': 39.35617958431692}}	
+{('CONSUMER NON-DURABLES', 2017): {'variazione_annuale_media': 8.745890886399435, 'volume_medio': 1176367.553558475, 'var_giornaliera_media': 41.04950327447033}}	
+{('CONSUMER NON-DURABLES', 2018): {'variazione_annuale_media': 10.516359221917494, 'volume_medio': 1223517.1754731748, 'var_giornaliera_media': 42.52822902009216}}	
+{('CONSUMER DURABLES', 2008): {'variazione_annuale_media': -39.453647967444006, 'volume_medio': 776180.4780184517, 'var_giornaliera_media': 22.224244186469843}}	
+{('CONSUMER DURABLES', 2009): {'variazione_annuale_media': 73.36505981709948, 'volume_medio': 712392.2276147933, 'var_giornaliera_media': 17.720038996612942}}	
+{('CONSUMER DURABLES', 2010): {'variazione_annuale_media': 22.53228209119134, 'volume_medio': 575047.0336727925, 'var_giornaliera_media': 22.803888072930352}}	
+{('CONSUMER DURABLES', 2011): {'variazione_annuale_media': -0.9394639894974643, 'volume_medio': 585705.2312248462, 'var_giornaliera_media': 23.286402215249765}}	
+{('CONSUMER DURABLES', 2012): {'variazione_annuale_media': 19.919298025959993, 'volume_medio': 495359.594856153, 'var_giornaliera_media': 23.351258611526788}}	
+{('CONSUMER DURABLES', 2013): {'variazione_annuale_media': 46.86544695786767, 'volume_medio': 457943.7728265618, 'var_giornaliera_media': 35.35079082928178}}	
+{('CONSUMER DURABLES', 2014): {'variazione_annuale_media': 16.848057846499696, 'volume_medio': 450174.6084429066, 'var_giornaliera_media': 49.30246528006961}}	
+{('CONSUMER DURABLES', 2015): {'variazione_annuale_media': -1.9811275142612572, 'volume_medio': 411710.61852199526, 'var_giornaliera_media': 37.382855608106695}}	
+{('CONSUMER DURABLES', 2016): {'variazione_annuale_media': 21.010135329449028, 'volume_medio': 470172.5934864327, 'var_giornaliera_media': 35.68637639254126}}	
+{('CONSUMER DURABLES', 2017): {'variazione_annuale_media': 112.4381793912555, 'volume_medio': 447708.1157282037, 'var_giornaliera_media': 39.77336734600471}}	
+{('CONSUMER DURABLES', 2018): {'variazione_annuale_media': 18.831090419749312, 'volume_medio': 510230.143462197, 'var_giornaliera_media': 40.34654748941597}}	
+{('HEALTH CARE', 2013): {'variazione_annuale_media': 54.9189575073814, 'volume_medio': 997553.9550747435, 'var_giornaliera_media': 57.88317612298831}}	
+{('HEALTH CARE', 2014): {'variazione_annuale_media': 191.79616758894952, 'volume_medio': 894184.5185422205, 'var_giornaliera_media': 62.386282849862106}}	
+{('HEALTH CARE', 2015): {'variazione_annuale_media': 201.04249196582685, 'volume_medio': 873185.6194006496, 'var_giornaliera_media': 55.20400052090314}}	
+{('HEALTH CARE', 2016): {'variazione_annuale_media': -9.459155322489393, 'volume_medio': 867733.5452175454, 'var_giornaliera_media': 33.04288624735714}}	
+{('HEALTH CARE', 2017): {'variazione_annuale_media': 38.43553132811576, 'volume_medio': 839708.4916397925, 'var_giornaliera_media': 29.47204891490607}}	
+{('HEALTH CARE', 2008): {'variazione_annuale_media': -38.5637071320967, 'volume_medio': 1389739.2444150676, 'var_giornaliera_media': 68.40986489381834}}	
+{('HEALTH CARE', 2009): {'variazione_annuale_media': 125.27278062820108, 'volume_medio': 1419234.0569169342, 'var_giornaliera_media': 56.28222238898266}}	
+{('HEALTH CARE', 2010): {'variazione_annuale_media': 30.98827500050627, 'volume_medio': 1274038.1494516893, 'var_giornaliera_media': 67.35590235687742}}	
+{('HEALTH CARE', 2011): {'variazione_annuale_media': -5.86190730273364, 'volume_medio': 1182663.0928938156, 'var_giornaliera_media': 52.01636633416355}}	
+{('HEALTH CARE', 2012): {'variazione_annuale_media': 22.96028740018837, 'volume_medio': 1001473.7092140982, 'var_giornaliera_media': 45.34315591327964}}	
+{('CONSUMER NON-DURABLES', 2008): {'variazione_annuale_media': -37.62401503933006, 'volume_medio': 1845606.2231773154, 'var_giornaliera_media': 23.501965095907476}}	
+{('CONSUMER NON-DURABLES', 2009): {'variazione_annuale_media': 77.22894609583727, 'volume_medio': 1620150.3103923097, 'var_giornaliera_media': 19.02873327709167}}	
+{('MISCELLANEOUS', 2008): {'variazione_annuale_media': -42.80696300793261, 'volume_medio': 2119387.486192234, 'var_giornaliera_media': 21.905212250695314}}	
+{('MISCELLANEOUS', 2009): {'variazione_annuale_media': 103.57227602560836, 'volume_medio': 1822593.074139289, 'var_giornaliera_media': 22.46075529181267}}	
+{('MISCELLANEOUS', 2010): {'variazione_annuale_media': 28.155728885901098, 'volume_medio': 1589884.9558849796, 'var_giornaliera_media': 28.0892784926208}}	
+{('MISCELLANEOUS', 2011): {'variazione_annuale_media': -7.469294976934601, 'volume_medio': 1331125.1239562996, 'var_giornaliera_media': 31.80113322635923}}	
+{('MISCELLANEOUS', 2012): {'variazione_annuale_media': 201.05138904909847, 'volume_medio': 1152532.3998128865, 'var_giornaliera_media': 30.11664922729685}}	
+{('MISCELLANEOUS', 2013): {'variazione_annuale_media': 44.46941949770427, 'volume_medio': 1039611.5727112945, 'var_giornaliera_media': 37.39657021854224}}	
+{('MISCELLANEOUS', 2014): {'variazione_annuale_media': 9.231948948400438, 'volume_medio': 1156757.2736345294, 'var_giornaliera_media': 43.69146765199024}}	
+{('MISCELLANEOUS', 2015): {'variazione_annuale_media': 2.377095402017519, 'volume_medio': 1017054.0527303811, 'var_giornaliera_media': 45.02107041384567}}	
+{('MISCELLANEOUS', 2016): {'variazione_annuale_media': 17.06300931719354, 'volume_medio': 1085262.7008151226, 'var_giornaliera_media': 44.412326542367154}}	
+{('MISCELLANEOUS', 2017): {'variazione_annuale_media': 23.606504062631956, 'volume_medio': 981447.2410307474, 'var_giornaliera_media': 44.201338226313695}}	
+{('MISCELLANEOUS', 2018): {'variazione_annuale_media': 9.163526916640503, 'volume_medio': 1108339.1960214572, 'var_giornaliera_media': 62.409950431803004}}	
+{('PUBLIC UTILITIES', 2016): {'variazione_annuale_media': 21.722789162222156, 'volume_medio': 1333297.7175428031, 'var_giornaliera_media': 142.92556626782155}}	
+{('PUBLIC UTILITIES', 2017): {'variazione_annuale_media': 7.7319592772305015, 'volume_medio': 1146949.3197130484, 'var_giornaliera_media': 122.12322188631454}}	
+{('PUBLIC UTILITIES', 2018): {'variazione_annuale_media': 1353.1816220674698, 'volume_medio': 1242742.8820936237, 'var_giornaliera_media': 51.84418011127061}}	
+{('PUBLIC UTILITIES', 2008): {'variazione_annuale_media': -31.667835429902343, 'volume_medio': 1738225.6380328033, 'var_giornaliera_media': 26.948917721503943}}	
+{('PUBLIC UTILITIES', 2009): {'variazione_annuale_media': 46.636007102886694, 'volume_medio': 1750958.0593834317, 'var_giornaliera_media': 21.80063109904323}}	
+{('PUBLIC UTILITIES', 2010): {'variazione_annuale_media': 22.903781541168982, 'volume_medio': 1715565.6861383242, 'var_giornaliera_media': 71.36554434999552}}	
+{('PUBLIC UTILITIES', 2011): {'variazione_annuale_media': -5.004189759623789, 'volume_medio': 1756970.3993272914, 'var_giornaliera_media': 140.10289137341857}}	
+{('PUBLIC UTILITIES', 2012): {'variazione_annuale_media': 1705.873352457102, 'volume_medio': 1595313.2300151174, 'var_giornaliera_media': 132.73017037368965}}	
+{('PUBLIC UTILITIES', 2013): {'variazione_annuale_media': 26.25809848084152, 'volume_medio': 1366692.1457961584, 'var_giornaliera_media': 109.27095992807567}}	
+{('PUBLIC UTILITIES', 2014): {'variazione_annuale_media': 807.0802969382713, 'volume_medio': 1321471.935532742, 'var_giornaliera_media': 96.26931208368882}}	
+{('PUBLIC UTILITIES', 2015): {'variazione_annuale_media': 159.6907491091507, 'volume_medio': 1328636.5153546634, 'var_giornaliera_media': 119.05705558776533}}	
