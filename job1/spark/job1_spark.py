@@ -1,13 +1,12 @@
 #from pyspark.sql import SparkSession
 import pyspark as ps
-
+from datetime import datetime
+from pyspark import SparkContext, SparkConf
 spark = ps.sql.SparkSession.builder.appName("Python Spark job 1 for Big Data project").config("spark.some.config.option", "some-value").getOrCreate()
-#df = spark.read.load("/home/adfr/Documenti/python-BigData/progetto1/csv_progetto/test-progetto.csv",
-                   #  format="csv", sep=",", inferSchema="true", header="true")
 
-df=spark.read.csv('/home/adfr/Documenti/python-BigData/progetto1/csv_progetto/historical_stock_prices.csv',inferSchema="true", header="true")
-#df=spark.read.csv('/home/giacomo/hadoop-3.2.1/DATI_AGGIUNTIVI/BIG_DATA_PROGETTO-1/azioni_test.csv',inferSchema="true", header="true")
-#df=spark.read.csv('/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/historical_stock_prices.csv',inferSchema="true", header="true")
+#df=spark.read.csv('/home/adfr/Documenti/python-BigData/progetto1/csv_progetto/historical_stock_prices.csv',inferSchema="true", header="true")
+df=spark.read.csv('/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/historical_stock_prices.csv',inferSchema="true", header="true")
+#df=spark.read.csv('/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/azioni_test.csv',inferSchema="true", header="true")
 
 """
 un'azione è così definita:
@@ -20,77 +19,82 @@ un'azione è così definita:
         "volume": azione[6],
         "data": azione[7],
 """
-azioni = df.rdd
+#conf = SparkConf().setAppName("Job1 Spark")
+#sc = SparkContext(conf=conf)
+#azioni = sc.textFile("/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/historical_stock_prices_update.csv")
 
+
+#azioni = azioni.map(lambda f: f.split(','))
+#azioni = azioni.filter(lambda a: a[7]>='2008-01-01')
+azioni = df.rdd
 """
 definiamo un map (K,V) tale che:
-                K = "ticker"
-                V[0] = "close"
-                V[1] = "volume"
-                V[2] = "date"
+                K = 'AHH'
+                V: {
+                    'prezzo_close_min' : 11.57
+                    'prezzo_close_max' : 11.57
+                    'somma_volume' : 1984
+                    'data_min' : '2010-05-20'
+                    'prezzo_iniziale': 11.57
+                    'data_max' : '2010-05-20'
+                    'prezzo_finale': 11.57
+                    }
 """
-azioni = azioni.filter(lambda a: a[7]>='2008-01-01').map(lambda line: ( line[0], [line[2],line[6],line[7]] ) )
+#filtriamo le azioni, considerando solo quelle che hanno data maggiore del 2018
+azioni = azioni.filter(lambda a: a[7]>='2008-01-01').map(lambda line: ( line[0], {'prezzo_close_min':float(line[2]),
+                                                                                  'prezzo_close_max':float(line[2]),
+                                                                                  'somma_volume':float(line[6]),
+                                                                                  'data_min':line[7],
+                                                                                  'prezzo_iniziale': float(line[2]),
+                                                                                  'data_max':line[7],
+                                                                                  'prezzo_finale':float(line[2])} ) )
 
-"""print ("\nprima del reduceByKey:\n")
-azioni.foreach(lambda a: print (a))
-"""
-"""
-def funzione_reduce(a1,a2):
-    prezzo_min=min(a1[0],a2[0])
-    data_min = min(a1[1],a2[1])
-    return [prezzo_min,data_min]
+def rid(a1,a2):
+    a ={}
+    a['prezzo_close_min']=min(a1['prezzo_close_min'],a2['prezzo_close_min'])
+    a['prezzo_close_max'] = max(a1['prezzo_close_max'], a2['prezzo_close_max'])
+    a['somma_volume'] = a1['somma_volume']+a2['somma_volume']
 
-min_azioni=azioni.reduceByKey(min)
-max_azioni = azioni.reduceByKey(max)
-"""
-def f_red_var_percent(a1,a2):
-    if(a1[0]<a2[0]):
-        data_iniziale = a1[0]
-        close_iniziale = a1[1]
+    if a1['data_min']<a2['data_min']:
+        a['data_min']=a1['data_min']
+        a['prezzo_iniziale']=a1['prezzo_iniziale']
     else:
-        data_iniziale = a2[0]
-        close_iniziale = a2[1]
-    if(a1[2]>a2[2]):
-        data_finale = a1[2]
-        close_finale = a1[3]
+        a['data_min'] = a2['data_min']
+        a['prezzo_iniziale'] = a2['prezzo_iniziale']
+
+    if a1['data_max']>a2['data_max']:
+        a['data_max']=a1['data_max']
+        a['prezzo_finale']=a1['prezzo_finale']
     else:
-        data_finale = a2[2]
-        close_finale = a2[3]
-    return ([data_iniziale,close_iniziale,data_finale,close_finale])
+        a['data_max'] = a2['data_max']
+        a['prezzo_finale'] = a2['prezzo_finale']
 
-var_perc = azioni.map( lambda a: (a[0],[a[1][2],a[1][0],a[1][2],a[1][0]]) ).reduceByKey(f_red_var_percent)
-result_var_perc = var_perc.map(lambda a: (a[0],(100*(a[1][3]-a[1][1])/a[1][1])))
-result_var_perc.saveAsTextFile("output")
+    return a
 
-list_var_perc = result_var_perc.collect()
+count_per_ticker = azioni.groupByKey().map(lambda a:(a[0],len(list(a[1]))))
 
-for i in list_var_perc:
-    print (i)
-"""
+result_per_ticker = azioni.reduceByKey(rid)
 
-for i in result_var_perc.collect():
-    print (i)
-"""
-#calcolo volume medio
-def f_red_avg_vol(a1,a2):
-        return (a1[0]+a2[0],a1[1]+a2[1])
-avg_vol = azioni.map(lambda a: (a[0],(a[1][1],1))).reduceByKey(f_red_avg_vol)
-for t,v in avg_vol.collect():
-        print(t,v[0]/v[1])
-"""
-#ci salviamo in una lista l'RDD contenente i valori minimi per ciascun simbolo_azione
-list_min_azioni=min_azioni.collect()
-#ci salviamo in una lista l'RDD contente i valori massimi ci ciascun simbolo_azione
-list_max_azioni = max_azioni.collect()
+unione = result_per_ticker.join(count_per_ticker)
 
+#print("\nunione:\n")
+#unione.foreach(lambda a:print(a))
 
+result_finale = unione.map(lambda a: (a[0],{
+                                            'var_percentuale':(100*(a[1][0]['prezzo_finale']-a[1][0]['prezzo_iniziale'])/a[1][0]['prezzo_iniziale']),
+                                            'volume_medio':a[1][0]['somma_volume']/a[1][1],
+                                            'prezzo_minimo':a[1][0]['prezzo_close_min'],
+                                            'prezzo_massimo':a[1][0]['prezzo_close_max']
+                                            }))
+print("qui")
 
-print ("\nDopo il reduceByKey:\n")
-print("valori minimi:\n")
-min_azioni.foreach(lambda a: print (a))
+result_finale = result_finale.sortBy((lambda row: float(row[1]['var_percentuale'])), ascending=False)
+#risultato = result_finale.collect()
+#print("\nresult:\n")
+#result_finale.foreach(lambda a:print(a))
+result_finale.saveAsTextFile("/home/giacomo/PycharmProjects/corno_grande_progetto1/job1/spark/results")
 
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
+print("Current Time =", current_time)
 
-print("\nvalori massimi:\n")
-max_azioni.foreach(lambda a: print (a))
-#azioni.saveAsTextFile("output")
-"""
