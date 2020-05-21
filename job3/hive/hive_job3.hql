@@ -28,7 +28,7 @@ CREATE TABLE stocks(
 )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',';
 
-LOAD DATA INPATH 'input/test-medio.csv'
+LOAD DATA INPATH 'input/historical_stock_prices.csv'
 OVERWRITE INTO TABLE stock_price;
 
 LOAD DATA INPATH 'input/historical_stocks.csv'
@@ -57,14 +57,15 @@ CREATE TABLE finalPrice as
     GROUP BY ut.name,ut.anno;
 
 CREATE TABLE variazioni as
-    SELECT initialPrice.name, initialPrice.anno , (100*(finalPrice.price-initialPrice.price)/initialPrice.price) AS var
+    SELECT initialPrice.name, initialPrice.anno , round((100*(finalPrice.price-initialPrice.price)/initialPrice.price),0) AS var
     FROM initialPrice JOIN finalPrice ON initialPrice.name=finalPrice.name AND initialPrice.anno = finalPrice.anno;
 
 CREATE TABLE result as 
-    SELECT v1.name, '2016:'||INT(v1.var)||'%, 2017:'||INT(v2.var)||'%, 2018:'||INT(v3.var)||'%' as tripletta
+    SELECT v1.name, '2016:'||v1.var||'%, 2017:'||v2.var||'%, 2018:'||v3.var||'%' as tripletta
     FROM (SELECT * FROM variazioni WHERE anno = '2016') as v1,
         (SELECT * FROM variazioni WHERE anno = '2017')as v2, 
         (SELECT * FROM variazioni WHERE anno = '2018')as v3
     WHERE v1.name = v2.name AND v1.name = v3.name
     ORDER BY tripletta;
+
 SELECT * FROM result;

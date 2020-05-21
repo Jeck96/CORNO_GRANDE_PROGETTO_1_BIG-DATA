@@ -1,0 +1,5 @@
+INSERT OVERWRITE LOCAL DIRECTORY '/home/adfr/Documenti/python-BigData/progetto1/job3_res_hive/'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\\'
+STORED AS TEXTFILE
+SELECT * FROM result;
