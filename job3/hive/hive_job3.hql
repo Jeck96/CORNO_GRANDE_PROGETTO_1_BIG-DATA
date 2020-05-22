@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS initialPrice;
 DROP TABLE IF EXISTS finalPrice;
 DROP TABLE IF EXISTS variazioni;
 DROP TABLE IF EXISTS result;
+DROP TABLE IF EXISTS var_unite;
 
 CREATE TABLE stock_price(
 	ticker STRING,
@@ -28,7 +29,7 @@ CREATE TABLE stocks(
 )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',';
 
-LOAD DATA INPATH 'input/historical_stock_prices_3.csv'
+LOAD DATA INPATH 'input/historical_stock_prices.csv'
 OVERWRITE INTO TABLE stock_price;
 
 LOAD DATA INPATH 'input/historical_stocks.csv'
@@ -60,12 +61,17 @@ CREATE TABLE variazioni as
     SELECT initialPrice.name, initialPrice.anno , round((100*(finalPrice.price-initialPrice.price)/initialPrice.price),0) AS var
     FROM initialPrice JOIN finalPrice ON initialPrice.name=finalPrice.name AND initialPrice.anno = finalPrice.anno;
 
-CREATE TABLE result as 
-    SELECT v1.name, '2016:'||v1.var||'%, 2017:'||v2.var||'%, 2018:'||v3.var||'%' as tripletta
+CREATE TABLE var_unite as 
+    SELECT '2016:'||v1.var||'%, 2017:'||v2.var||'%, 2018:'||v3.var||'%' as tripletta, v1.name as name
     FROM (SELECT * FROM variazioni WHERE anno = '2016') as v1,
         (SELECT * FROM variazioni WHERE anno = '2017')as v2, 
         (SELECT * FROM variazioni WHERE anno = '2018')as v3
-    WHERE v1.name = v2.name AND v1.name = v3.name
-    ORDER BY tripletta;
+    WHERE v1.name = v2.name AND v1.name = v3.name;
+
+CREATE TABLE result as
+    SELECT collect_list(name) as names, tripletta
+    FROM var_unite
+    GROUP BY tripletta
+    ORDER BY size(names) DESC;
 
 --SELECT * FROM result;
