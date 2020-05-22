@@ -1,0 +1,4 @@
+(('BASIC INDUSTRIES', '2008'), {'var_annuale_media': -42.05233135508782, 'volume_medio': 2315405.227442191, 'var_giornaliera': 39.99813107884423})
+(('TECHNOLOGY', '2010'), {'var_annuale_media': 30.927742588478537, 'volume_medio': 2931206.8650739426, 'var_giornaliera': 22.288489315607425})
+(('CAPITAL GOODS', '2015'), {'var_annuale_media': 441.90653329096244, 'volume_medio': 905871.6210360131, 'var_giornaliera': 42.59790690495322})
+(('ENERGY', '2008'), {'var_annuale_media': -47.17711109306387, 'volume_medio': 3409627.3955240925, 'var_giornaliera': 235.38270933168656})
