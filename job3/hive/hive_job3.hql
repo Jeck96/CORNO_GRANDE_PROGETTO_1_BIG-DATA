@@ -28,7 +28,7 @@ CREATE TABLE stocks(
 )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',';
 
-LOAD DATA INPATH 'input/historical_stock_prices.csv'
+LOAD DATA INPATH 'input/historical_stock_prices_3.csv'
 OVERWRITE INTO TABLE stock_price;
 
 LOAD DATA INPATH 'input/historical_stocks.csv'
@@ -68,4 +68,4 @@ CREATE TABLE result as
     WHERE v1.name = v2.name AND v1.name = v3.name
     ORDER BY tripletta;
 
-SELECT * FROM result;
+--SELECT * FROM result;

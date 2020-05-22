@@ -3,7 +3,7 @@ import costanct as C
 
 spark = SparkSession.builder.appName("Python Spark job 3 for Big Data project").config("spark.some.config.option", "some-value").getOrCreate()
 
-df_azioni=spark.read.csv('/home/adfr/Documenti/python-BigData/progetto1/csv_progetto/historical_stock_prices.csv',inferSchema="true", header="true")
+df_azioni=spark.read.csv('/home/adfr/Documenti/python-BigData/progetto1/csv_progetto/historical_stock_prices_3.csv',inferSchema="true", header="true")
 
 df_aziende = spark.read.csv('/home/adfr/Documenti/python-BigData/progetto1/csv_progetto/historical_stocks.csv',inferSchema="true", header="true")
 
@@ -50,4 +50,4 @@ rdd_tot = rdd_tot.map(lambda row: (row[0],tuple(row[1]))).filter(lambda a: len(a
 rdd_tot = rdd_tot.map(lambda row: (row[1],row[0])).groupByKey().map(lambda row: (list(row[1]),row[0]))
 rdd_tot = rdd_tot.sortBy(lambda row: len(row[0]), ascending=False)
 
-rdd_tot.saveAsTextFile("output_2")
+#rdd_tot.saveAsTextFile("output_2")
