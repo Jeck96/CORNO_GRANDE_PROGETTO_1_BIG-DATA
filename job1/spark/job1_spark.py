@@ -1,13 +1,12 @@
-#from pyspark.sql import SparkSession
 import pyspark as ps
 from datetime import datetime
-from pyspark import SparkContext, SparkConf
-spark = ps.sql.SparkSession.builder.appName("Python Spark job 1 for Big Data project").config("spark.some.config.option", "some-value").getOrCreate()
-
+from pyspark import SparkContext
+#spark = ps.sql.SparkSession.builder.appName("Python Spark job 1 for Big Data project").config("spark.some.config.option", "some-value").getOrCreate()
+sc = SparkContext(appName = "job1_Spark")
 #df=spark.read.csv('/home/adfr/Documenti/python-BigData/progetto1/csv_progetto/historical_stock_prices.csv',inferSchema="true", header="true")
-df=spark.read.csv('/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/historical_stock_prices.csv',inferSchema="true", header="true")
+#df=spark.read.csv('/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/historical_stock_prices.csv',inferSchema="true", header="true")
 #df=spark.read.csv('/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/azioni_test.csv',inferSchema="true", header="true")
-
+azioni = sc.textFile("/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/historical_stock_prices_update.csv")
 """
 un'azione è così definita:
         "ticker": azione[0],
@@ -26,7 +25,7 @@ un'azione è così definita:
 
 #azioni = azioni.map(lambda f: f.split(','))
 #azioni = azioni.filter(lambda a: a[7]>='2008-01-01')
-azioni = df.rdd
+#azioni = df.rdd
 """
 definiamo un map (K,V) tale che:
                 K = 'AHH'
@@ -40,6 +39,7 @@ definiamo un map (K,V) tale che:
                     'prezzo_finale': 11.57
                     }
 """
+azioni = azioni.map(lambda a: a.split(','))
 #filtriamo le azioni, considerando solo quelle che hanno data maggiore del 2018
 azioni = azioni.filter(lambda a: a[7]>='2008-01-01').map(lambda line: ( line[0], {'prezzo_close_min':float(line[2]),
                                                                                   'prezzo_close_max':float(line[2]),
@@ -86,15 +86,15 @@ result_finale = unione.map(lambda a: (a[0],{
                                             'prezzo_minimo':a[1][0]['prezzo_close_min'],
                                             'prezzo_massimo':a[1][0]['prezzo_close_max']
                                             }))
-print("qui")
 
 result_finale = result_finale.sortBy((lambda row: float(row[1]['var_percentuale'])), ascending=False)
 #risultato = result_finale.collect()
 #print("\nresult:\n")
 #result_finale.foreach(lambda a:print(a))
 result_finale.saveAsTextFile("/home/giacomo/PycharmProjects/corno_grande_progetto1/job1/spark/results")
+sc.stop()
 
-now = datetime.now()
-current_time = now.strftime("%H:%M:%S")
-print("Current Time =", current_time)
+#now = datetime.now()
+#current_time = now.strftime("%H:%M:%S")
+#print("Current Time =", current_time)
 

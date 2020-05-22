@@ -1,25 +1,29 @@
 #from pyspark.sql import SparkSession
 import pyspark as ps
 from datetime import datetime
+from pyspark import SparkContext
 
-now = datetime.now()
-current_time = now.strftime("%H:%M:%S")
-print("Current Time =", current_time)
+sc = SparkContext(appName = "job2_Spark")
 
-spark = ps.sql.SparkSession.builder.appName("Python Spark SQL basic example").\
-                                    config("spark.some.config.option", "some-value").getOrCreate()
+#now = datetime.now()
+#current_time = now.strftime("%H:%M:%S")
+#print("Current Time =", current_time)
+
+#spark = ps.sql.SparkSession.builder.appName("Python Spark SQL basic example").\
+#                                    config("spark.some.config.option", "some-value").getOrCreate()
 
 #importiamo il dataset sulle azioni
-df_azioni=spark.read.csv('/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/historical_stock_prices.csv',
-                         inferSchema="true", header="true")
-
+#df_azioni=spark.read.csv('/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/historical_stock_prices.csv',
+#                         inferSchema="true", header="true")
+azioni = sc.textFile("/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/historical_stock_prices_update.csv")
 #importiamo il dataset sui settori
-df_settori=spark.read.csv('/home/giacomo/hadoop-3.2.1/DATI_AGGIUNTIVI/BIG_DATA_PROGETTO-1/historical_stocks.csv',
-                          inferSchema="true", header="true",sep=",")
+settori = sc.textFile("/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/historical_stocks_update_per_hive.csv")
+#df_settori=spark.read.csv('/home/giacomo/hadoop-3.2.1/DATI_AGGIUNTIVI/BIG_DATA_PROGETTO-1/historical_stocks.csv',
+#                          inferSchema="true", header="true",sep=",")
 
 #trasformiamo i dataframe df_azioni e df_settori in rdd
-azioni = df_azioni.rdd
-settori = df_settori.rdd
+#azioni = df_azioni.rdd
+#settori = df_settori.rdd
 
 #stampe di test
 #print("\nazioni:\n")
@@ -27,7 +31,8 @@ settori = df_settori.rdd
 
 #print("\nsettori:\n")
 #settori.foreach(lambda a: print (a))
-
+azioni = azioni.map(lambda a: a.split(','))
+settori = settori.map(lambda s: s.split(';'))
 """
 azioni_modificato è un RDD così costruito: 
     -Da azioni applichiamo un filter per rimuovere le azioni più vecchie del 2008
@@ -47,8 +52,8 @@ azioni_modificato è un RDD così costruito:
 """
 azioni_modificato = azioni.filter(lambda a: a[7] >= '2008-01-01').\
                            map(lambda a:( (a[0] , a[7].split('-')[0]) ,
-                                          {'data_iniziale':a[7],'prezzo_iniziale':a[2],
-                                           'data_finale':a[7],'prezzo_finale':a[2],
+                                          {'data_iniziale':a[7],'prezzo_iniziale':float(a[2]),
+                                           'data_finale':a[7],'prezzo_finale':float(a[2]),
                                            'volume':float(a[6]), 'var_giornaliera':float(a[2])} ))
 """
 count_per_azione_anno serve per contare le occorrenze ci ciascuna azione raggruppate per chiave (ticker,anno) 
@@ -204,9 +209,9 @@ result_finale = result_per_settore.map(lambda a:(a[0],{'var_annuale_media':a[1][
                                                   }))
 #print("\nresult finale:\n")
 #result_finale.foreach(lambda a: print(a))
-result_finale.saveAsTextFile('results')
+result_finale.saveAsTextFile('/home/giacomo/PycharmProjects/corno_grande_progetto1/job2/spark/results')
+sc.stop()
 
-
-now = datetime.now()
-current_time = now.strftime("%H:%M:%S")
-print("Current Time =", current_time)
+#now = datetime.now()
+#current_time = now.strftime("%H:%M:%S")
+#print("Current Time =", current_time)
