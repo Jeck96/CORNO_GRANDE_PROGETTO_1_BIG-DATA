@@ -13,11 +13,16 @@ for line in sys.stdin:
     del line
     """
     formato dell'oggetto caricato:
-    {
-        "ticker" : "GDR",
-        "close" : "9.743632",
-        "volume" : "57393",
-        "date" : "2017-04-27"
+    { 
+        "ticker" : ticker, 
+        "low" : low,
+        "high" : high,
+        "sum_volume" : sum_volum,
+        "count_volume" : count_volume,
+        "first_date" : fist_date,
+        "first_price" : first_price,
+        "last_date" : last_date,
+        "last_price" : last_price
     }
     """
     #Riempimento del dizionario
@@ -29,22 +34,27 @@ for line in sys.stdin:
 #Iterarazione sul dizionario per calcolare i vari campi richiesti
 result = []
 for k in dizionario:
-    all_price = [] 
+    low_prices = []
+    hig_prices = []
     sum_volums = 0
+    count = 0
     for a in dizionario[k]:
-        all_price.append(float(a['close']))
-        sum_volums+=(int(a['volume']))
+        low_prices.append(float(a['low']))
+        hig_prices.append(float(a['high']))
+        sum_volums+=(int(a['sum_volume']))
+        count+=(int(a['count_volume']))
 
-    lowest_price = min(all_price)
-    hieght_price = max(all_price)
-    average_volume = sum_volums/len(dizionario[k])
+    lowest_price = min(low_prices)
+    hieght_price = max(hig_prices)
+    average_volume = sum_volums/count
     
-    del all_price
     
     #calcolo variazione percentuale di prezzo
-    dizionario[k] = sorted(dizionario[k], key=lambda a: a['date']) #ordino per data
-    initial_price = float(dizionario[k][0]['close'])
-    final_price = float(dizionario[k][len(dizionario[k])-1]['close'])
+    dizionario[k] = sorted(dizionario[k], key=lambda a: a['first_date']) #ordino per first_date
+    initial_price = float(dizionario[k][0]['first_price'])
+    
+    dizionario[k] = sorted(dizionario[k], key=lambda a: a['last_date'],reverse=True) #ordino per last_date   
+    final_price = float(dizionario[k][0]['last_price'])
     x_cent_dif = 100 * (final_price-initial_price) / initial_price
 
     #print(f'{{\nsimbolo:{k}\nvariazone_percentuale:{x_cent_dif}%\nprezzo_min:{lowest_price}\nprezzo_massimo:{hieght_price}\nvolume_medio:{average_volume}\n}}')
