@@ -6,7 +6,7 @@ sc = SparkContext(appName = "job1_Spark")
 #df=spark.read.csv('/home/adfr/Documenti/python-BigData/progetto1/csv_progetto/historical_stock_prices.csv',inferSchema="true", header="true")
 #df=spark.read.csv('/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/historical_stock_prices.csv',inferSchema="true", header="true")
 #df=spark.read.csv('/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/azioni_test.csv',inferSchema="true", header="true")
-azioni = sc.textFile("/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/historical_stock_prices_update.csv")
+azioni = sc.textFile("/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/file_grandi/historical_stock_prices_update_02.csv")
 """
 un'azione è così definita:
         "ticker": azione[0],
@@ -91,7 +91,7 @@ result_finale = result_finale.sortBy((lambda row: float(row[1]['var_percentuale'
 #risultato = result_finale.collect()
 #print("\nresult:\n")
 #result_finale.foreach(lambda a:print(a))
-result_finale.saveAsTextFile("/home/giacomo/PycharmProjects/corno_grande_progetto1/job1/spark/results")
+result_finale.saveAsTextFile("results")
 sc.stop()
 
 #now = datetime.now()

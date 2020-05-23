@@ -12,7 +12,7 @@ CREATE TABLE azioni_test(
 )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',';
 
-LOAD DATA LOCAL INPATH '/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/historical_stock_prices_update.csv'
+LOAD DATA LOCAL INPATH '/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/file_grandi/historical_stock_prices_update_02.csv'
 OVERWRITE INTO TABLE azioni_test;
 
 DROP TABLE IF EXISTS view_azioni;
@@ -43,7 +43,7 @@ CREATE TABLE results AS(
 	WHERE finale.data = ia.data_max AND iniziale.data = ia.data_min);
 
 --query con i risultati
-INSERT OVERWRITE LOCAL DIRECTORY '/home/giacomo/PycharmProjects/corno_grande_progetto1/job1/hive/results'
+INSERT OVERWRITE LOCAL DIRECTORY 'results'
 SELECT ticker, variazione_percentuale,prezzo_minimo,prezzo_massimo,volume_medio
 FROM results
 ORDER BY variazione_percentuale DESC;

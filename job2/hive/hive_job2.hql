@@ -13,7 +13,7 @@ CREATE TABLE azioni_test(
 )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',';
 
-LOAD DATA LOCAL INPATH '/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/dataset/historical_stock_prices_200.csv'
+LOAD DATA LOCAL INPATH '/home/giacomo/apache-hive-3.1.2-bin/data/BIG_DATA_PROGETTO-1/file_grandi/historical_stock_prices_update_02.csv'
 OVERWRITE INTO TABLE azioni_test;
 
 
